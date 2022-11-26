@@ -1,9 +1,10 @@
 .button_type_edit {
-  color: #000;
+  background-color: black;
   width: 18px;
   height: 18px;
   border: 1px solid #FFFFFF;
   background-image: url(../../../images/button_type_edit.svg);
   background-repeat: no-repeat;
   background-position: center;
+  align-self: center;
 }

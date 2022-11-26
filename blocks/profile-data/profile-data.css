@@ -1,3 +1,12 @@
 .profile-data {
   padding-top: 38.2px;
+  padding-bottom: 36px;
+}
+
+@media (min-width: 720px) {
+  .profile-data {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+  }
 }

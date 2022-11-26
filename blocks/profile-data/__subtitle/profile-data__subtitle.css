@@ -5,3 +5,13 @@
   line-height: 17px;
   text-align: center;
 }
+
+@media (min-width: 720px) {
+  .profile-data__subtitle {
+   min-width: 294px;
+   text-align: start;
+   font-style: 18px;
+   line-height: 22px;
+   margin: 0;
+  }
+}

@@ -1,3 +1,11 @@
 .button_type_like {
-  
+  display: inline-block;
+  background-color: white;
+  background-image: url(../../../images/button_type_like.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 19px;
+  border-style: none;
+  align-self: center;
 }
