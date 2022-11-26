@@ -75,11 +75,11 @@
           </div>
         </div>
       </section>
-      <div class="pop-up">
+      <div class="pop-up" id="poptest">
       <form class="popup__container">
         <h2 class="pop-up__title">Редактировать профиль</h2>
-        <input type="text" class="pop-up__input" placeholder="test">
-        <input type="text" class="pop-up__input" placeholder="test">
+        <input type="text" class="pop-up__input-name" placeholder="test">
+        <input type="text" class="pop-up__input-hobby" placeholder="test">
         <button class="button button_type_save">Сохранить</button>
         <a class="pop-up__close" href="#">
           <img src="./images/pop-up__close.svg" alt="закрыть">
@@ -91,5 +91,43 @@
       <p class="footer__subtitle">© 2022 Mesto Russia</p>
     </footer>
   </div>
+  <script>
+    let buttonEdit = document.querySelector('.button_type_edit');
+    let popup = document.querySelector('.pop-up');
+    let buttonSave = document.querySelector('.button_type_save');
+    let form = document.querySelector('.popup__container');
+    buttonEdit.addEventListener('click', openPopup);
+    
+    buttonSave.addEventListener('click', formSave);
+    // функция открытия поп ап
+    function openPopup() {
+      popup.classList.add('pop-up__opened');
+    }
+    
+    // функция работы с формой
+    function formSave() {
+      let name = document.querySelector('.profile-data__name');
+      let hobby = document.querySelector('.profile-data__subtitle');
+      let inputName = document.querySelector('.pop-up__input-name');
+      let inputHobby = document.querySelector('.pop-up__input-hobby');
+      
+      name.textContent = inputName.value;
+      hobby.textContent = inputHobby.value;
+     
+      
+      evt.preventDefault();
+    }
+
+    buttonSave.addEventListener('click', formSave); 
+
+    let popup__close = document.querySelector('.pop-up__close');
+    popup__close.addEventListener('click', closePopup);
+    // функция закрытия поп ап
+    function closePopup() {
+      popup.classList.remove('pop-up__opened');
+    }
+    
+
+  </script>
 </body>
 </html>
