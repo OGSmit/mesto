@@ -1,16 +1,17 @@
 .profile-data__subtitle {
   color: #fff;
   font-weight: 400;
-  font-style: 14px;
+  font-size: 14px;
   line-height: 17px;
   text-align: center;
+  margin-top: 8px;
 }
 
 @media (min-width: 720px) {
   .profile-data__subtitle {
    min-width: 294px;
    text-align: start;
-   font-style: 18px;
+   font-size: 18px;
    line-height: 22px;
    margin: 0;
   }

@@ -1,0 +1,11 @@
+.block-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 720px) {
+  .block-column {
+    gap: 10px;
+    align-self: center;
+  }
+}

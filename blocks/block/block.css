@@ -1,0 +1,16 @@
+.block {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 0 auto;
+  padding-top: 26px;
+  padding-left: 25px;
+}
+
+@media (min-width: 720px) {
+  .block {
+    padding-left: 0;
+    padding-top: 0;
+    gap: 18px;
+  }
+}

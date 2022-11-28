@@ -9,6 +9,8 @@
   background-image: url(../../../images/button_type_add.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 22px;
+  margin-top: 18px;
 }
 
 @media (min-width: 720px) {
@@ -18,4 +20,10 @@
     margin: 0;
   }
   
+}
+
+@media (min-width: 920px) {
+  .button_type_add {
+    margin: 0 0 0 212px;
+  }
 }

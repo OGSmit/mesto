@@ -1,0 +1,10 @@
+.pop-up__input-hobby {
+  width: 238px;
+  border-style: none;
+}
+
+@media (min-width: 500px) {
+  .pop-up__input-hobby {
+    width: 330px;
+  }
+}

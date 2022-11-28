@@ -8,3 +8,10 @@
   background-position: center;
   align-self: center;
 }
+
+@media (min-width: 450px) {
+  .button_type_edit {
+    width: 25px;
+    height: 25px;
+  }
+}
