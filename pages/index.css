@@ -27,7 +27,7 @@
 @import url(../blocks/place-card/place-card.css);
 @import url(../blocks/place-card/__image/place-card__image.css);
 @import url(../blocks/place-card/__subtitle/place-card__subtitle.css);
-@import url(../blocks/container/container);
+@import url(../blocks/container/container.css);
 @import url(../blocks/container/__mod/container__mod.css);
 
 @import url(../blocks/pop-up/pop-up.css);
