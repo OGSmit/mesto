@@ -20,7 +20,7 @@
             <div class="block-column">
               <div class="block">
                 <h1 class="profile-data__name">Жак-Ив Кусто</h1>
-                <button class="button button_type_edit" >
+                <button class="button button_type_edit">
                 </button>
               </div>
               <p class="profile-data__subtitle">Исследователь океана</p>
@@ -79,10 +79,10 @@
       <form class="popup__container">
         <h2 class="pop-up__title">Редактировать профиль</h2>
         <div class="input-container">
-          <input type="text" class="pop-up__input-name" placeholder="">
+          <input type="text" class="pop-up__input-name" placeholder="" value="">
         </div>
         <div class="input-container">
-          <input type="text" class="pop-up__input-hobby" placeholder="">
+          <input type="text" class="pop-up__input-hobby" placeholder="" value="">
         </div>
         <button class="button button_type_save">Сохранить</button>
         <a class="pop-up__close" href="#">
@@ -99,35 +99,41 @@
     let buttonEdit = document.querySelector('.button_type_edit');
     let popup = document.querySelector('.pop-up');
     let buttonSave = document.querySelector('.button_type_save');
-    let form = document.querySelector('.popup__container');
+    let popupClose = document.querySelector('.pop-up__close');
     buttonEdit.addEventListener('click', openPopup);
     buttonSave.addEventListener('click', formSave);
+    popupClose.addEventListener('click', closePopup);
+    // Находим форму в DOM
+    let form = document.querySelector('.popup__container');
+    // Находим поля формы в DOM
+    let inputName = document.querySelector('.pop-up__input-name');
+    let inputHobby = document.querySelector('.pop-up__input-hobby');
+    let name = document.querySelector('.profile-data__name');
+    let hobby = document.querySelector('.profile-data__subtitle');
     // функция открытия поп ап
     function openPopup() {
       popup.classList.add('pop-up__opened');
+      inputName.value = name.textContent;
+      inputHobby.value = hobby.textContent;
     }
     
     // функция работы с формой
-    function formSave() {
-      let name = document.querySelector('.profile-data__name');
-      let hobby = document.querySelector('.profile-data__subtitle');
-      let inputName = document.querySelector('.pop-up__input-name');
-      let inputHobby = document.querySelector('.pop-up__input-hobby');
+    function formSave(evt) {
+      evt.preventDefault();
+      // Получите значение полей jobInput и nameInput из свойства value
       
+      // Выберите элементы, куда должны быть вставлены значения полей
+
+       // Вставьте новые значения с помощью textContent
       name.textContent = inputName.value;
       hobby.textContent = inputHobby.value;
-      
-      buttonSave.addEventListener('click', closePopup());
-      // evt.preventDefault();
+      // функция закрытия поп
+      buttonSave.addEventListener('click', closePopup);
     }
-    
-    buttonSave.addEventListener('click', formSave()); 
     
     // функция закрытия поп ап
     function closePopup() {
-      let popup__close = document.querySelector('.pop-up__close');
       popup.classList.remove('pop-up__opened');
-      popup__close.addEventListener('click', closePopup);
     }
   </script>
 </body>
