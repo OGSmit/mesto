@@ -9,8 +9,9 @@
 
 @import url(../blocks/main/main.css);
 @import url(../blocks/profiles/profiles.css);
-@import url(../blocks/block-column/block-column.css);
-@import url(../blocks/block/block.css);
+@import url(../blocks/flex-column/flex-column.css);
+@import url(../blocks/flex-column/_profile/flex-column_profile.css);
+@import url(../blocks/flex-row/flex-row.css);
 @import url(../blocks/profile-container/profile-container.css);
 @import url(../blocks/profile-data/profile-data.css);
 @import url(../blocks/profile-data/__avater/profile-data__avatar.css);

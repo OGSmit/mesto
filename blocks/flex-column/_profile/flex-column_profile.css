@@ -1,0 +1,11 @@
+.flex-column_profile {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 450px) {
+  .flex-column_profile {
+    flex-direction: row;
+    gap: 30px;
+  }
+}

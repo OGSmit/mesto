@@ -5,6 +5,12 @@
   margin: 0 auto;
 }
 
+@media (min-width: 450px) {
+  .profile-data__avatar {
+   margin: 0;
+  }
+}
+
 @media (min-width: 720px) {
   .profile-data__avatar {
    max-height: 127.5px;
