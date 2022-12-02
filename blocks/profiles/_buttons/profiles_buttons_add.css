@@ -1,7 +1,7 @@
-.button_type_add {
+.profiles_buttons_add {
   background-color: rgba(255, 255, 255, 0);
   margin: 0 auto;
-  width: 100%;
+  width: 282px;
   height: 50px;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
@@ -10,25 +10,27 @@
   background-position: center;
   background-size: 16px;
   margin-top: 18px;
+  grid-area: add;
 }
 
-@media (min-width: 720px) {
-  .button_type_add {
+@media (min-width: 330px) {
+  .profiles_buttons_add {
+    width: 100%;
+  }
+}
+
+@media (min-width: 930px) {
+  .profiles_buttons_add {
     max-width: 150px;
     align-self: center;
     margin: 0;
     background-size: 22px;
-  }
-  
-}
-
-@media (min-width: 920px) {
-  .button_type_add {
-    margin: 0 0 0 212px;
+    align-self: center;
+    justify-self: end;
   }
 }
 
-.button_type_add:hover {
+.profiles_buttons_add:hover {
   cursor: pointer; 
   opacity: .6; 
 } 

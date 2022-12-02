@@ -1,19 +1,17 @@
 .profiles__avatar {
   display: block;
   border-radius: 50%;
-  max-width: 120px;
-  max-height: 120px;
+  max-width: 119.5px;
+  max-height: 119.5px;
   margin: 0 auto;
+  grid-area: avatar;
 }
 
-@media (min-width: 450px) {
-  .profile-data__avatar {
-   margin: 0;
-  }
-}
-
-@media (min-width: 720px) {
+@media (min-width: 650px) {
   .profiles__avatar {
-   max-height: 127.5px;
+    margin: 0;
+    max-height: 127.5px;
+    align-self: center;
+    justify-self: start;
   }
 }

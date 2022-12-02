@@ -1,8 +1,10 @@
-.pop-up__close {
+.popup_buttons_close {
   position: absolute;
   right: 0;
-  top: -28px;
+  top: -36px;
   background-image: url(../../../images/pop-up__close.svg);
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
   background-repeat: no-repeat;
   display: block;
   background-size: cover;
@@ -11,11 +13,15 @@
 }
 
 @media (min-width: 450px) {
-  .pop-up__close {
+  .popup_buttons_close {
     right: -40px;
     top: -40px;
     width: 32px;
     height: 32px;
   }
-  
+}
+
+.popup_buttons_close:hover {
+  opacity: .6;
+  cursor: pointer;
 }

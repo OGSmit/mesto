@@ -14,122 +14,74 @@
   <main class="main">
     <section class="profiles">
       <div class="profiles__container">
-        <div class="profile-data">
-            <div class="flex-column-profile">
-            <img alt="Аватар профиля" src="./images/profile__avatar.png" class="profiles__avatar">
-          <div class="flex-column">
-            <div class="flex-row">
-              <h1 class="profiles__name">Жак-Ив Кусто</h1>
-              <button class="button button_type_edit">
-              </button>
-            </div>
-            <button class="button button_type_add">
-              <img class="button__image_type_add">
-            </button>
+        <div class="profiles__column">
+          <img alt="Аватар профиля" src="./images/profile__avatar.png" class="profiles__avatar">
+          <div class="profiles__row">
+            <h1 class="profiles__name">Жак-Ив Кусто</h1>
+            <button class="profiles_buttons_edit"></button>
           </div>
-          <div class="profile-content">
-            <div class="place-card">
-              <img src="./images/karachaevsk.png" alt="фотография города Карачаевск" class="place-card__image">
-              <div class="container container__mod">
-                <p class="place-card__subtitle">Карачаевск</p>
-                <button class="button button_type_like"></button>
-              </div>
+          <p class="profiles__subtitle">Исследователь океана</p>
+          <button class="profiles_buttons_add" type="submit"></button>
+        </div> 
+        <div class="profile-content">
+          <div class="place-card">
+            <img src="./images/karachaevsk.png" alt="фотография города Карачаевск" class="place-card__image">
+            <div class="place-card__container">
+              <p class="place-card__subtitle">Карачаевск</p>
+              <button class="place-card_buttons_like" type="button"></button>
             </div>
-            <div class="place-card">
-              <img src="./images/elbrus.png" alt="фотография горы Эльбрус" class="place-card__image">
-              <div class="container container__mod">
-                <p class="place-card__subtitle">гора Эльбрус</p>
-                <button class="button button_type_like"></button>
-              </div> 
+          </div>
+          <div class="place-card">
+            <img src="./images/elbrus.png" alt="фотография горы Эльбрус" class="place-card__image">
+            <div class="place-card__container">
+              <p class="place-card__subtitle">гора Эльбрус</p>
+              <button class="place-card_buttons_like" type="button"></button>
+            </div> 
+          </div>
+          <div class="place-card">
+            <img src="./images/dombai.png" alt="фотография Горного хребта" class="place-card__image">
+            <div class="place-card__container">
+              <p class="place-card__subtitle">Домбай</p>
+              <button class="place-card_buttons_like" type="button"></button>
             </div>
-            <div class="place-card">
-              <img src="./images/dombai.png" alt="фотография Горного хребта" class="place-card__image">
-              <div class="container container__mod">
-                <p class="place-card__subtitle">Домбай</p>
-                <button class="button button_type_like"></button>
-              </div>
+          </div>
+          <div class="place-card">
+            <img src="./images/Sapa.png" alt="фотография города Са-Па" class="place-card__image">
+            <div class="place-card__container">
+              <p class="place-card__subtitle">Са-Па</p>
+              <button class="place-card_buttons_like" type="button"></button>
             </div>
-            <div class="place-card">
-              <img src="./images/Sapa.png" alt="фотография города Са-Па" class="place-card__image">
-              <div class="container container__mod">
-                <p class="place-card__subtitle">Са-Па</p>
-                <button class="button button_type_like"></button>
-              </div>
+          </div>
+          <div class="place-card">
+            <img src="./images/tan-shan.png" alt="фотография гор Тянь-Шань" class="place-card__image">
+            <div class="place-card__container">
+              <p class="place-card__subtitle">Тянь-Шань</p>
+              <button class="place-card_buttons_like" type="button"></button>
             </div>
-            <div class="place-card">
-              <img src="./images/tan-shan.png" alt="фотография гор Тянь-Шань" class="place-card__image">
-              <div class="container container__mod">
-                <p class="place-card__subtitle">Тянь-Шань</p>
-                <button class="button button_type_like"></button>
-              </div>
-            </div>
-            <div class="place-card">
-              <img src="./images/pik-adama.png" alt="фотография пика Адама" class="place-card__image">
-              <div class="container container__mod">
-                <p class="place-card__subtitle">пик Адама</p>
-                <button class="button button_type_like"></button>
-              </div>
+          </div>
+          <div class="place-card">
+            <img src="./images/pik-adama.png" alt="фотография пика Адама" class="place-card__image">
+            <div class="place-card__container">
+              <p class="place-card__subtitle">пик Адама</p>
+              <button class="place-card_buttons_like" type="button"></button>
             </div>
           </div>
         </div>
-      </section>
-      <div class="pop-up" id="poptest">
-      <form class="popup__container">
-        <h2 class="pop-up__title">Редактировать профиль</h2>
-        <div class="input-container">
-          <input type="text" class="pop-up__input-name" placeholder="">
-        </div>
-        <div class="input-container">
-          <input type="text" class="pop-up__input-hobby" placeholder="">
-        </div>
-        <button class="button button_type_save">Сохранить</button>
-        <a class="pop-up__close" href="#">
-          <img src="./images/pop-up__close.svg" alt="закрыть">
-        </a>
-      </form>
       </div>
-    </main>
-    <footer class="footer">
-      <p class="footer__subtitle">© 2022 Mesto Russia</p>
-    </footer>
-  </div>
-  <script>
-    let buttonEdit = document.querySelector('.button_type_edit');
-    let popup = document.querySelector('.pop-up');
-    let buttonSave = document.querySelector('.button_type_save');
-    let form = document.querySelector('.popup__container');
-    buttonEdit.addEventListener('click', openPopup);
-    
-    buttonSave.addEventListener('click', formSave);
-    // функция открытия поп ап
-    function openPopup() {
-      popup.classList.add('pop-up__opened');
-    }
-    
-    // функция работы с формой
-    function formSave() {
-      let name = document.querySelector('.profile-data__name');
-      let hobby = document.querySelector('.profile-data__subtitle');
-      let inputName = document.querySelector('.pop-up__input-name');
-      let inputHobby = document.querySelector('.pop-up__input-hobby');
-
-      name.textContent = inputName.value;
-      hobby.textContent = inputHobby.value;
-
-      buttonSave.addEventListener('click', closePopup());
-      evt.preventDefault();
-    }
-
-    buttonSave.addEventListener('click', formSave()); 
-    
-    // функция закрытия поп ап
-    function closePopup() {
-      let popup__close = document.querySelector('.pop-up__close');
-      popup.classList.remove('pop-up__opened');
-      popup__close.addEventListener('click', closePopup);
-    }
-    
-
-  </script>
+    </section>
+      <div class="popup">
+        <form class="popup__container" name="form">
+          <button class="popup_buttons_close" type="button"></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input type="text" class="popup__inputs popup__inputs_type_name" placeholder="">
+          <input type="text" class="popup__inputs popup__inputs_type_hobby" placeholder="">
+          <button class="popup_buttons_save" type="submit">Сохранить</button>
+        </form>
+      </div>
+  </main>
+  <footer class="footer">
+    <p class="footer__subtitle">© 2022 Mesto Russia</p>
+  </footer>
+  <script src="./scripts/script.js"></script>
 </body>
 </html>

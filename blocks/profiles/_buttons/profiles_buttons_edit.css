@@ -1,21 +1,24 @@
-.button_type_edit {
+.profiles_buttons_edit {
   background-color: rgba(255, 255, 255, 0);
-  width: 18px;
-  height: 18px;
   border: 1px solid #FFFFFF;
   background-image: url(../../../images/button_type_edit.svg);
   background-repeat: no-repeat;
   background-position: center;
   align-self: center;
+  width: 18px;
+  height: 18px;
 }
 
 @media (min-width: 450px) {
-  .button_type_edit {
-    background-size: 25px 25px;
+  .profiles_buttons_edit {
+    width: 25px;
+    height: 25px;
+    margin-top: 7px;
+    margin-left: 5px;
   }
 }
 
-.button_type_edit:hover {
+.profiles_buttons_edit:hover {
   cursor: pointer; 
   opacity: .6; 
 } 

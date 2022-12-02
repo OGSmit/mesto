@@ -5,15 +5,29 @@
   line-height: 17px;
   text-align: center;
   margin-top: 8px;
+  grid-area: name;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 220px;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 550px) {
   .profiles__subtitle {
-   min-width: 294px;
+    max-width: 290px;
    text-align: start;
    font-size: 18px;
    line-height: 22px;
-   margin: 0;
    max-width: 300px;
+   align-self: end;
+   justify-self: start;
+   margin-bottom: 20px;
+   margin-left: 10px;
+  }
+}
+
+@media (min-width: 700px) {
+  .profiles__subtitle {
+   max-width: 400px;
   }
 }

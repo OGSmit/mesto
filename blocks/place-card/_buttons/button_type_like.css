@@ -1,4 +1,4 @@
-.button_type_like {
+.place-card_buttons_like {
   background-color: rgba(255, 255, 255, 0);
   background-image: url(../../../images/button_type_like.svg);
   background-position: center;
@@ -9,11 +9,11 @@
   align-self: center;
 }
 
-.button_type_like:active {
+.place-card_buttons_like:active {
   background-image: url(../../../images/button_type_like-black.svg);
 }
 
-.button_type_like:hover {
+.place-card_buttons_like:hover {
   cursor: pointer; 
   opacity: .5; 
 } 

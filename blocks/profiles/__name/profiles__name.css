@@ -5,13 +5,23 @@
   line-height: 33px;
   text-align: center;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 220px;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 550px) {
   .profiles__name {
-   min-width: 294px;
    text-align: start;
    font-size: 42px;
    line-height: 114%;
+   max-width: 290px;
+  }
+}
+
+@media (min-width: 700px) {
+  .profiles__name {
+   max-width: 400px;
   }
 }

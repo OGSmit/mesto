@@ -1,6 +1,6 @@
 .place-card__image {
   display: block;
   width: 100%;
-  max-height: 282px;
+  /* max-height: 282px; если добавить свойство вся резиновость исчезает */
   border-radius: 10px 10px 0px 0px;
 }

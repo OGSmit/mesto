@@ -1,0 +1,33 @@
+.profiles__column {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: 42px;
+}
+
+@media (min-width: 550px) {
+  .profiles__column{
+    padding: 42px 19px 0;
+    width: 100%;
+    max-width: 880px;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "avatar name"
+      "add add"
+    ;
+  }
+}
+
+@media (min-width: 930px) {
+  .profiles__column{
+    padding: 42px 0 0;
+    grid-template-columns: 120px 1fr 150px;
+    grid-template-areas:
+      "avatar name add"
+    ;
+  }
+}
