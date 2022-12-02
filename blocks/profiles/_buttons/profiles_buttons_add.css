@@ -22,7 +22,6 @@
 @media (min-width: 930px) {
   .profiles_buttons_add {
     max-width: 150px;
-    align-self: center;
     margin: 0;
     background-size: 22px;
     align-self: center;
@@ -31,6 +30,6 @@
 }
 
 .profiles_buttons_add:hover {
-  cursor: pointer; 
-  opacity: .6; 
+  cursor: pointer;
+  opacity: .6;
 } 
