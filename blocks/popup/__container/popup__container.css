@@ -9,15 +9,11 @@
   background-color: #fff;
   position: relative;
   width: 282px;
-  height: 322px;
-  margin-top: 123px;
   border-radius: 10px;
 }
 
 @media (min-width: 500px) {
   .popup__container {
     width: 430px;
-    max-width: 430px;
-    height: 330px;
   }
 }

@@ -1,4 +1,4 @@
-.profile-data__subtitle {
+.profiles__subtitle {
   color: #fff;
   font-weight: 400;
   font-size: 14px;
@@ -8,7 +8,7 @@
 }
 
 @media (min-width: 720px) {
-  .profile-data__subtitle {
+  .profiles__subtitle {
    min-width: 294px;
    text-align: start;
    font-size: 18px;

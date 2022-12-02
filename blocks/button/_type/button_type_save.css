@@ -4,4 +4,21 @@
   width: 238px;
   height: 46px;
   margin-top: 45px;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  border: 0;
+  border-radius: 2px;
 }
+
+@media (min-width: 450px) {
+  .button_type_save {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.button_type_save:hover {
+  cursor: pointer; 
+  opacity: .8; 
+} 
