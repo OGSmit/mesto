@@ -1,7 +1,8 @@
-.profile-data__avatar {
+.profiles__avatar {
   display: block;
   border-radius: 50%;
   max-width: 120px;
+  max-height: 120px;
   margin: 0 auto;
 }
 
@@ -12,8 +13,7 @@
 }
 
 @media (min-width: 720px) {
-  .profile-data__avatar {
+  .profiles__avatar {
    max-height: 127.5px;
-   margin: 0;
   }
 }

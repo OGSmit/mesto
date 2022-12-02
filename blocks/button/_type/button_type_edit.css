@@ -1,5 +1,5 @@
 .button_type_edit {
-  background-color: black;
+  background-color: rgba(255, 255, 255, 0);
   width: 18px;
   height: 18px;
   border: 1px solid #FFFFFF;
@@ -11,8 +11,11 @@
 
 @media (min-width: 450px) {
   .button_type_edit {
-    width: 25px;
-    height: 25px;
-    margin-top: 7px;
+    background-size: 25px 25px;
   }
 }
+
+.button_type_edit:hover {
+  cursor: pointer; 
+  opacity: .6; 
+} 

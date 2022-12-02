@@ -1,8 +1,6 @@
 @import url(../vendor/normalize.css);
-@import url(../blocks/page/page.css);
 @import url(../vendor/fonts.css);
-
-@import url(../blocks/wrapper/wrapper.css);
+@import url(../blocks/page/page.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
@@ -12,10 +10,11 @@
 @import url(../blocks/flex-column/flex-column.css);
 @import url(../blocks/flex-column-profile/flex-column-profile.css);
 @import url(../blocks/flex-row/flex-row.css);
-@import url(../blocks/profile-container/profile-container.css);
+@import url(../blocks/profiles/__container/profiles__container.css);
 @import url(../blocks/profile-data/profile-data.css);
-@import url(../blocks/profile-data/__avater/profile-data__avatar.css);
-@import url(../blocks/profile-data/__name/profile-data__name.css);
+@import url(../blocks/profiles/__avatar/profiles__avatar.css);
+@import url(../blocks/profiles/__name/profiles__name.css);
+@import url(../blocks/profiles/__subtitle/profiles__subtitle.css);
 
 @import url(../blocks/button/button.css);
 @import url(../blocks/button/_type/button_type_edit.css);
@@ -23,7 +22,6 @@
 @import url(../blocks/button/_type/button_type_like.css);
 @import url(../blocks/button/_type/button_type_save.css);
 
-@import url(../blocks/profile-data/__subtitle/profile-data__subtitle.css);
 @import url(../blocks/profile-content/profile-content.css);
 @import url(../blocks/place-card/place-card.css);
 @import url(../blocks/place-card/__image/place-card__image.css);

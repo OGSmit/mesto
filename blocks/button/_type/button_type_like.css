@@ -1,6 +1,5 @@
 .button_type_like {
-  display: inline-block;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   background-image: url(../../../images/button_type_like.svg);
   background-position: center;
   background-repeat: no-repeat;
@@ -12,5 +11,9 @@
 
 .button_type_like:active {
   background-image: url(../../../images/button_type_like-black.svg);
-  opacity: 1;
 }
+
+.button_type_like:hover {
+  cursor: pointer; 
+  opacity: .5; 
+} 
