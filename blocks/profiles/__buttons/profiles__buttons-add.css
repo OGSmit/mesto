@@ -1,4 +1,4 @@
-.profiles_buttons_add {
+.profiles__buttons-add {
   background-color: rgba(255, 255, 255, 0);
   margin: 0 auto;
   width: 282px;
@@ -14,13 +14,13 @@
 }
 
 @media (min-width: 330px) {
-  .profiles_buttons_add {
+  .profiles__buttons-add {
     width: 100%;
   }
 }
 
 @media (min-width: 930px) {
-  .profiles_buttons_add {
+  .profiles__buttons_add {
     max-width: 150px;
     margin: 0;
     background-size: 22px;
@@ -29,7 +29,7 @@
   }
 }
 
-.profiles_buttons_add:hover {
+.profiles__buttons-add:hover {
   cursor: pointer;
   opacity: .6;
 } 

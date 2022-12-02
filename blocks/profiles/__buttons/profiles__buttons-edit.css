@@ -1,4 +1,4 @@
-.profiles_buttons_edit {
+.profiles__buttons-edit {
   background-color: rgba(255, 255, 255, 0);
   border: 1px solid #FFFFFF;
   background-image: url(../../../images/button_type_edit.svg);
@@ -10,7 +10,7 @@
 }
 
 @media (min-width: 450px) {
-  .profiles_buttons_edit {
+  .profiles__buttons-edit {
     width: 25px;
     height: 25px;
     margin-top: 7px;
@@ -18,7 +18,7 @@
   }
 }
 
-.profiles_buttons_edit:hover {
+.profiles__buttons-edit:hover {
   cursor: pointer;
   opacity: .6;
 } 

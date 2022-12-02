@@ -1,4 +1,4 @@
-.popup_buttons_close {
+.popup__buttons-close {
   position: absolute;
   right: 0;
   top: -36px;
@@ -13,7 +13,7 @@
 }
 
 @media (min-width: 450px) {
-  .popup_buttons_close {
+  .popup__buttons-close {
     right: -40px;
     top: -40px;
     width: 32px;
@@ -21,7 +21,7 @@
   }
 }
 
-.popup_buttons_close:hover {
+.popup__buttons-close:hover {
   opacity: .6;
   cursor: pointer;
 }
