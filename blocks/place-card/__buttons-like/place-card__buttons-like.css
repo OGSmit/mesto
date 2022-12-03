@@ -11,6 +11,7 @@
 
 .place-card__buttons-like:active {
   background-image: url(../../../images/button_type_like-black.svg);
+  opacity: 1;
 }
 
 .place-card__buttons-like:hover {
