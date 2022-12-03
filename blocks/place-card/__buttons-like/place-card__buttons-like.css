@@ -1,6 +1,6 @@
 .place-card__buttons-like {
   background-color: rgba(255, 255, 255, 0);
-  background-image: url(../../../images/button_type_like.svg);
+  background-image: url('../../../images/button_type_like.svg');
   background-position: center;
   background-repeat: no-repeat;
   width: 22px;
@@ -10,7 +10,7 @@
 }
 
 .place-card__buttons-like:active {
-  background-image: url(../../../images/button_type_like-black.svg);
+  background-image: url('../../../images/button_type_like-black.svg');
   opacity: 1;
 }
 
