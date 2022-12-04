@@ -1,7 +1,7 @@
 let popup = document.querySelector('.popup');
 let form = document.querySelector('.popup__container');
 let buttonEdit = document.querySelector('.profiles__buttons-edit');
-let buttonSave = document.querySelector('.popup__buttons-save');
+// let buttonSave = document.querySelector('.popup__buttons-save');
 let popupClose = document.querySelector('.popup__buttons-close');
 let inputName = document.querySelector('.popup__inputs_type_name');
 let inputHobby = document.querySelector('.popup__inputs_type_hobby');

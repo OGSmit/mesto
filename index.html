@@ -13,75 +13,73 @@
   </header>
   <main class="main">
     <section class="profiles">
-      <div class="profiles__container">
-        <div class="profiles__column">
-          <img alt="Аватар профиля" src="./images/profile__avatar.png" class="profiles__avatar">
+      <div class="profiles__column">
+        <img alt="Аватар профиля" src="./images/profile__avatar.png" class="profiles__avatar">
           <div class="profiles__row">
-            <h1 class="profiles__name">Жак-Ив Кусто</h1>
-            <button class="profiles__buttons-edit"></button>
+            <hh2 class="profiles__name">Жак-Ив Кусто</hh2>
+            <button class="profiles__buttons-edit" type="submit"></button>
           </div>
           <p class="profiles__subtitle">Исследователь океана</p>
-          <button class="profiles__buttons-add" type="submit"></button>
+          <button class="profiles__buttons-add" type="button"></button>
+      </div>
+    </section>
+    <section class="profile-content">
+      <div class="place-card">
+        <img src="./images/karachaevsk.png" alt="фотография города Карачаевск" class="place-card__image">
+        <div class="place-card__container">
+          <h2 class="place-card__subtitle">Карачаевск</h2>
+          <button class="place-card__buttons-like" type="button"></button>
+        </div>
+      </div>
+      <div class="place-card">
+        <img src="./images/elbrus.png" alt="фотография горы Эльбрус" class="place-card__image">
+        <div class="place-card__container">
+          <h2 class="place-card__subtitle">гора Эльбрус</h2>
+          <button class="place-card__buttons-like" type="button"></button>
         </div> 
-        <div class="profile-content">
-          <div class="place-card">
-            <img src="./images/karachaevsk.png" alt="фотография города Карачаевск" class="place-card__image">
-            <div class="place-card__container">
-              <p class="place-card__subtitle">Карачаевск</p>
-              <button class="place-card__buttons-like" type="button"></button>
-            </div>
-          </div>
-          <div class="place-card">
-            <img src="./images/elbrus.png" alt="фотография горы Эльбрус" class="place-card__image">
-            <div class="place-card__container">
-              <p class="place-card__subtitle">гора Эльбрус</p>
-              <button class="place-card__buttons-like" type="button"></button>
-            </div> 
-          </div>
-          <div class="place-card">
-            <img src="./images/dombai.png" alt="фотография Горного хребта" class="place-card__image">
-            <div class="place-card__container">
-              <p class="place-card__subtitle">Домбай</p>
-              <button class="place-card__buttons-like" type="button"></button>
-            </div>
-          </div>
-          <div class="place-card">
-            <img src="./images/Sapa.png" alt="фотография города Са-Па" class="place-card__image">
-            <div class="place-card__container">
-              <p class="place-card__subtitle">Са-Па</p>
-              <button class="place-card__buttons-like" type="button"></button>
-            </div>
-          </div>
-          <div class="place-card">
-            <img src="./images/tan-shan.png" alt="фотография гор Тянь-Шань" class="place-card__image">
-            <div class="place-card__container">
-              <p class="place-card__subtitle">Тянь-Шань</p>
-              <button class="place-card__buttons-like" type="button"></button>
-            </div>
-          </div>
-          <div class="place-card">
-            <img src="./images/pik-adama.png" alt="фотография пика Адама" class="place-card__image">
-            <div class="place-card__container">
-              <p class="place-card__subtitle">пик Адама</p>
-              <button class="place-card__buttons-like" type="button"></button>
-            </div>
-          </div>
+      </div>
+      <div class="place-card">
+        <img src="./images/dombai.png" alt="фотография Горного хребта" class="place-card__image">
+        <div class="place-card__container">
+          <h2 class="place-card__subtitle">Домбай</h2>
+          <button class="place-card__buttons-like" type="button"></button>
+        </div>
+      </div>
+      <div class="place-card">
+        <img src="./images/Sapa.png" alt="фотография города Са-Па" class="place-card__image">
+        <div class="place-card__container">
+          <h2 class="place-card__subtitle">Са-Па</h2>
+          <button class="place-card__buttons-like" type="button"></button>
+        </div>
+      </div>
+      <div class="place-card">
+        <img src="./images/tan-shan.png" alt="фотография гор Тянь-Шань" class="place-card__image">
+        <div class="place-card__container">
+          <h2 class="place-card__subtitle">Тянь-Шань</h2>
+          <button class="place-card__buttons-like" type="button"></button>
+        </div>
+      </div>
+      <div class="place-card">
+        <img src="./images/pik-adama.png" alt="фотография пика Адама" class="place-card__image">
+        <div class="place-card__container">
+          <h2 class="place-card__subtitle">пик Адама</h2>
+          <button class="place-card__buttons-like" type="button"></button>
         </div>
       </div>
     </section>
-      <div class="popup">
-        <form class="popup__container" name="form">
-          <button class="popup__buttons-close" type="button"></button>
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" class="popup__inputs popup__inputs_type_name" placeholder="">
-          <input type="text" class="popup__inputs popup__inputs_type_hobby" placeholder="">
-          <button class="popup__buttons-save" type="submit">Сохранить</button>
-        </form>
-      </div>
+    <div class="popup">
+      <button class="popup__buttons-close" type="button"></button>
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form class="popup__container" name="form">
+        <input type="text" class="popup__inputs popup__inputs_type_name" placeholder="" name="name">
+        <input type="text" class="popup__inputs popup__inputs_type_hobby" placeholder="" name="hobby">
+        <button class="popup__buttons-save" type="submit">Сохранить</button>
+      </form>
+    </div>
   </main>
   <footer class="footer">
     <p class="footer__subtitle">© 2022 Mesto Russia</p>
   </footer>
-  <script src="./scripts/script.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
