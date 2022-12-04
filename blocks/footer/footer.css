@@ -5,3 +5,17 @@
   max-width: 880px;
   margin: 0 auto;
 }
+
+@media (min-width: 550px) {
+  .footer {
+    padding-top: 68px;
+    padding-left: 20px;
+  }
+}
+
+@media (min-width: 900px) {
+  .footer {
+    padding-top: 68px;
+    padding-left: 0;
+  }
+}

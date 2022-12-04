@@ -7,20 +7,21 @@
   max-width: 880px;
 }
 
-@media (min-width: 650px) {
+@media (min-width: 530px) {
   .profile-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    padding-top: 50px;
   }
   
 }
 
-@media (min-width: 930px) {
+@media (min-width: 770px) {
   .profile-content {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    column-gap: 19px;
+    column-gap: 17px;
     row-gap: 20px;
   }
   

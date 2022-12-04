@@ -1,7 +1,7 @@
 let popup = document.querySelector('.popup');
 let form = document.querySelector('.popup__container');
 let buttonEdit = document.querySelector('.profiles__buttons-edit');
-// let buttonSave = document.querySelector('.popup__buttons-save');
+let buttonSave = document.querySelector('.popup__container');
 let popupClose = document.querySelector('.popup__buttons-close');
 let inputName = document.querySelector('.popup__inputs_type_name');
 let inputHobby = document.querySelector('.popup__inputs_type_hobby');
@@ -10,7 +10,7 @@ let hobby = document.querySelector('.profiles__subtitle');
 
 // функция открытия поп ап
 function openPopup() {
-  popup.classList.add('popup_type_opened');
+  popup.classList.add('popup_opened');
   inputName.value = gname.textContent;
   inputHobby.value = hobby.textContent;
 }
@@ -19,13 +19,13 @@ function formSave(evt) {
   evt.preventDefault();
   gname.textContent = inputName.value;
   hobby.textContent = inputHobby.value;
-  buttonSave.addEventListener('click', closePopup);
+  closePopup();
 }
 // функция закрытия поп ап
 function closePopup() {
-  popup.classList.remove('popup_type_opened');
+  popup.classList.remove('popup_opened');
 }
 
 buttonEdit.addEventListener('click', openPopup);
-buttonSave.addEventListener('click', formSave);
+buttonSave.addEventListener('submit', formSave);
 popupClose.addEventListener('click', closePopup);

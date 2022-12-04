@@ -1,8 +1,8 @@
 .profiles__avatar {
   display: block;
   border-radius: 50%;
-  max-width: 119.5px;
-  max-height: 119.5px;
+  width: 119.5px;
+  height: 119.5px;
   margin: 0 auto;
   grid-area: avatar;
 }
@@ -10,7 +10,6 @@
 @media (min-width: 650px) {
   .profiles__avatar {
     margin: 0;
-    max-height: 127.5px;
     align-self: center;
     justify-self: start;
   }

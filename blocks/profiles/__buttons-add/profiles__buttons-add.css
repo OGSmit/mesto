@@ -5,25 +5,25 @@
   height: 50px;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
-  background-image: url(../../../images/button_type_add.svg);
+  background-image: url('../../../images/button_type_add.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 16px;
-  margin-top: 18px;
+  background-size: 16px 16px;
+  margin-top: 34px;
   grid-area: add;
 }
 
 @media (min-width: 330px) {
   .profiles__buttons-add {
     width: 100%;
+    background-size: 22px 22px;
   }
 }
 
-@media (min-width: 930px) {
+@media (min-width: 750px) {
   .profiles__buttons_add {
     max-width: 150px;
     margin: 0;
-    background-size: 22px;
     align-self: center;
     justify-self: end;
   }
