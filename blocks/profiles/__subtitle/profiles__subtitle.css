@@ -9,7 +9,7 @@
   white-space: nowrap;
   overflow: hidden;
   max-width: 220px;
-  margin: 8px auto;
+  margin: 0 auto;
 }
 
 @media (min-width: 550px) {
