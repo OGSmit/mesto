@@ -8,7 +8,6 @@
 
 @media (min-width: 550px) {
   .profiles__column{
-    padding: 42px 19px 0;
     width: 100%;
     max-width: 880px;
     display: grid;
@@ -23,7 +22,6 @@
 
 @media (min-width: 750px) {
   .profiles__column{
-    padding: 42px 19px 0;
     grid-template-columns: 120px 1fr 150px;
     grid-template-areas:
       "avatar name add";
