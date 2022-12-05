@@ -1,7 +1,7 @@
 .place-card__image {
   display: block;
   object-fit: cover;
-  height: 100%;
+  width: 100%;
   max-height: 282px;
   border-radius: 10px 10px 0px 0px;
 }
