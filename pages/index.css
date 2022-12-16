@@ -19,6 +19,7 @@
 @import url(../blocks/place-card/__image/place-card__image.css);
 @import url(../blocks/place-card/__subtitle/place-card__subtitle.css);
 @import url(../blocks/place-card/__buttons-like/place-card__buttons-like.css);
+@import url(../blocks/place-card/__button-delete/place-card__buttons-delete.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
