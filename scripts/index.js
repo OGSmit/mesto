@@ -6,7 +6,7 @@ let inputName = document.querySelector('.popup__inputs_type_name');
 let inputHobby = document.querySelector('.popup__inputs_type_hobby');
 let gname = document.querySelector('.profiles__name');
 let hobby = document.querySelector('.profiles__subtitle');
-// Проект 5 
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -31,22 +31,22 @@ const initialCards = [
   {
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
+  },
 ];
-let buttonAdd = document.querySelector('.profiles__buttons-add');
-const userTemplate = document.querySelector('.test').content;
-const usersOnline = document.querySelector('.profile-content');
-const userElement = userTemplate.querySelector('.place-card').cloneNode(true);
 
-userElement.querySelector('.place-card__image').src = initialCards[0].link;
-userElement.querySelector('.place-card__subtitle').textContent = initialCards[0].name;
-usersOnline.append(userElement);
-
+const buttonAdd = document.querySelector('.profiles__buttons-add');
+const userTemplate = document.querySelector('#template').content;
+const cardContainer = document.querySelector('.profile-content');
+const popupTitle = document.querySelector('.popup__title');
+const buttonLike = document.querySelector('.place-card__buttons-like');
+const buttonDelete = document.querySelector('.place-card__buttons-delete');
 // функция открытия поп ап
 function openPopup() {
+  buttonSave.removeEventListener('submit', saveCard);
   popup.classList.add('popup_opened');
   inputName.value = gname.textContent;
   inputHobby.value = hobby.textContent;
+  buttonSave.addEventListener('submit', formSave);
 }
 // функция работы с формой
 function formSave(evt) {
@@ -57,21 +57,57 @@ function formSave(evt) {
 }
 // функция закрытия поп ап
 function closePopup() {
+  popupTitle.textContent = 'Редактировать профиль';
   popup.classList.remove('popup_opened');
 }
 
-formEdit.addEventListener('click', openPopup);
-buttonSave.addEventListener('submit', formSave);
-popupClose.addEventListener('click', closePopup);
-
-
-// функция открытия поп ап карточек
-function openPopupCards () {
-  popup.classList.add('popup_opened');
-  let popupTitle = document.querySelector('.popup__title');
-  popupTitle.textContent = 'Новое место';
-  let popupSubtitle = document.querySelector('.place-card__subtitle');
-  inputName.value = popupSubtitle.textContent;
+// функция кнопки лайк
+function like() {
+  buttonLike.classList.toggle('place-card__buttons-like_active');
 }
 
+// Слушатели
+formEdit.addEventListener('click', openPopup);
+popupClose.addEventListener('click', closePopup);
 buttonAdd.addEventListener('click', openPopupCards);
+// buttonLike.addEventListener('click', like);
+
+
+  // функция открытия попап карточек
+  function openPopupCards (evt) {
+    evt.preventDefault();
+    buttonSave.removeEventListener('submit', formSave);
+    popup.classList.add('popup_opened');
+    popupTitle.textContent = 'Новое место';
+    inputHobby.value = '';
+    inputName.value = '';
+    buttonSave.addEventListener('submit', saveCard);
+  }
+  
+  // функция удаления карточки
+  // function removeCard() {
+  //   card.remove();
+  // }
+  
+  const card = userTemplate.querySelector('.place-card').cloneNode(true);
+  // функция создания карточки
+  function createCard () {
+    card.querySelector('.place-card__image').src = inputHobby.value;
+    card.querySelector('.place-card__subtitle').textContent = inputName.value;
+    return card;
+  }
+  
+  // функция добавления карточки в html
+function addCard () {
+  cardContainer.append(createCard());
+}
+
+// функция сохранения карточки
+function saveCard (evt) {
+  evt.preventDefault();
+  createCard();
+  addCard();
+  inputHobby.value = '';
+  inputName.value = '';
+  closePopup();
+}
