@@ -1,0 +1,13 @@
+.popup-image__subtitle {
+  font-weight: 400;
+  font-style: 12px;
+  line-height: 15px;
+  color: #fff;
+  max-width: 240px;
+}
+
+@media (min-width: 450px) {
+  .popup-image__subtitle {
+    max-width: 291px;
+  }
+}
