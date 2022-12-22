@@ -172,7 +172,9 @@ function openPopupCards (evt) {
       card.remove();
     }
     buttonDelete.addEventListener('click', removeCard);
-    return card;
+    let popUpCardContainer = document.querySelector('.profile-content');
+    let firstChild = popUpCardContainer.firstChild;
+    return popUpCardContainer.insertBefore(card, firstChild);
   }
   
 //   // функция добавления карточки в html
