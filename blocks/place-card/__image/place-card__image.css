@@ -5,3 +5,7 @@
   height: 282px;
   border-radius: 10px 10px 0px 0px;
 }
+
+.place-card__image:hover {
+  cursor: pointer;
+}
