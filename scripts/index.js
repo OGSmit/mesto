@@ -178,15 +178,14 @@ function openPopupCards (evt) {
   }
   
 //   // функция добавления карточки в html
-  function addCard2 () {
-    cardContainer.append(createCard2());
-  }
+  // function addCard2 () {
+  //   cardContainer.append(createCard2());
+  // }
   
 //   // функция сохранения карточки
   function saveCard2 (evt) {
     evt.preventDefault();
     createCard2();
-    addCard2();
     inputHobby.value = '';
     inputName.value = '';
     closePopup();
