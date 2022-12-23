@@ -81,6 +81,7 @@ const popupTitle = document.querySelector('.popup__title');
 function openPopup() {
   buttonSave.removeEventListener('submit', saveCard2);
   popup.classList.add('popup_opened');
+  buttonSave.querySelector('.popup__buttons-save').textContent = 'Сохранить';
   inputName.value = gname.textContent;
   inputHobby.value = hobby.textContent;
   buttonSave.addEventListener('submit', formSave);
@@ -108,6 +109,7 @@ function openPopupCards (evt) {
   evt.preventDefault();
   buttonSave.removeEventListener('submit', formSave);
   popup.classList.add('popup_opened');
+  buttonSave.querySelector('.popup__buttons-save').textContent = 'Создать';
   popupTitle.textContent = 'Новое место';
   inputHobby.value = '';
   inputName.value = '';
