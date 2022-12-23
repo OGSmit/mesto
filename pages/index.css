@@ -35,33 +35,7 @@
 @import url(../blocks/popup-image/__image/popup-image__image.css);
 @import url(../blocks/popup-image/__subtitle/popup-image__subtitle.css);
 @import url(../blocks/popup-image/_opened/popup-image_opened.css);
+@import url(../blocks/popup-image/__buttons-close/popup-image__buttons-close.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__subtitle/footer__subtitle.css);
 
-.popup-image__buttons-close {
-    position: absolute;
-    right: 0;
-    top: -36px;
-    background-image: url(../images/pop-up__close.svg);
-    background-color: rgba(255, 255, 255, 0);
-    border: 0;
-    background-repeat: no-repeat;
-    display: block;
-    background-size: cover;
-    width: 20px;
-    height: 20px;
-  }
-  
-  @media (min-width: 450px) {
-    .popup-image__buttons-close {
-      right: -40px;
-      top: -40px;
-      width: 32px;
-      height: 32px;
-    }
-  }
-  
-  .popup-image__buttons-close:hover {
-    opacity: .6;
-    cursor: pointer;
-  }

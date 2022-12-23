@@ -1,11 +1,11 @@
-let popup = document.querySelector('.popup');
-let formEdit = document.querySelector('.profiles__buttons-edit');
-let buttonSave = document.querySelector('.popup__form');
-let popupClose = document.querySelector('.popup__buttons-close');
-let inputName = document.querySelector('.popup__inputs_type_name');
-let inputHobby = document.querySelector('.popup__inputs_type_hobby');
-let gname = document.querySelector('.profiles__name');
-let hobby = document.querySelector('.profiles__subtitle');
+const popup = document.querySelector('.popup');
+const formEdit = document.querySelector('.profiles__buttons-edit');
+const buttonSave = document.querySelector('.popup__form');
+const popupClose = document.querySelector('.popup__buttons-close');
+const inputName = document.querySelector('.popup__inputs_type_name');
+const inputHobby = document.querySelector('.popup__inputs_type_hobby');
+const gname = document.querySelector('.profiles__name');
+const hobby = document.querySelector('.profiles__subtitle');
 
 const initialCards = [
   {
@@ -66,36 +66,6 @@ initialCards.forEach(object => {
   return cardContainer.prepend(card);
 });
 
-function createCard (object) {
-  // object = initialCards[3];
-  // let card = userTemplate.querySelector('.place-card').cloneNode(true);
-  // card.querySelector('.place-card__image').alt = 'фотография ' + object.name;
-  // card.querySelector('.place-card__image').src = object.link;
-  // card.querySelector('.place-card__subtitle').textContent = object.name;
-  // let buttonLike = card.querySelector('.place-card__buttons-like');
-  
-  // function like() {
-  //   console.log('ok');
-  //   const button = card.querySelector('.place-card__buttons-like');
-  //     button.classList.toggle('place-card__buttons-like_active');
-  // }
-  // buttonLike.addEventListener('click', like);
-
-  // const img = card.querySelector('.place-card__image');
-  // function openImg () {
-  //   document.querySelector('.popup-image__image').src = card.querySelector('.place-card__image').src;
-  //   document.querySelector('.popup-image__subtitle').textContent = card.querySelector('.place-card__subtitle').textContent;
-  //   test.classList.toggle('popup-image_opened');
-  // }
-  // img.addEventListener('click', openImg);
-  // const buttonDelete = card.querySelector('.place-card__buttons-delete');
-  // function removeCard () {
-  //   card.remove();
-  // }
-  // buttonDelete.addEventListener('click', removeCard);
-  // return card;
-};
-
 let test = document.querySelector('.popup-image');
 function close () {
   test.classList.toggle('popup-image_opened');
@@ -103,9 +73,6 @@ function close () {
 let closeImg = document.querySelector('.popup-image__buttons-close');
 closeImg.addEventListener('click', close);
 
-// function addCard () {
-//   cardContainer.prepend(createCard());
-// };
 
 const buttonAdd = document.querySelector('.profiles__buttons-add');
 const popupTitle = document.querySelector('.popup__title');
@@ -146,42 +113,39 @@ function openPopupCards (evt) {
   inputName.value = '';
   buttonSave.addEventListener('submit', saveCard2);
 }
-  
 // функция создания карточки
-  function createCard2 () {
-    let card = userTemplate.querySelector('.place-card').cloneNode(true);
-    card.querySelector('.place-card__image').src = inputHobby.value;
-    card.querySelector('.place-card__subtitle').textContent = inputName.value;
-    let buttonLike = card.querySelector('.place-card__buttons-like');
-  
-    function like() {
-      console.log('ok');
-      const button = card.querySelector('.place-card__buttons-like');
-        button.classList.toggle('place-card__buttons-like_active');
-    }
-    buttonLike.addEventListener('click', like);
-    function openImg () {
-      document.querySelector('.popup-image__image').src = card.querySelector('.place-card__image').src;
-      document.querySelector('.popup-image__subtitle').textContent = card.querySelector('.place-card__subtitle').textContent;
-      test.classList.toggle('popup-image_opened');
-    }
-    const img = card.querySelector('.place-card__image');
-    img.addEventListener('click', openImg);
-    const buttonDelete = card.querySelector('.place-card__buttons-delete');
-    function removeCard () {
-      card.remove();
-    }
-    buttonDelete.addEventListener('click', removeCard);
-    let popUpCardContainer = document.querySelector('.profile-content');
-    let firstChild = popUpCardContainer.firstChild;
-    return popUpCardContainer.insertBefore(card, firstChild);
+function createCard2 () {
+  let card = userTemplate.querySelector('.place-card').cloneNode(true);
+  card.querySelector('.place-card__image').src = inputHobby.value;
+  card.querySelector('.place-card__subtitle').textContent = inputName.value;
+  // смена классов для кнопки лайк
+  function like() {
+    console.log('ok');
+    const button = card.querySelector('.place-card__buttons-like');
+    button.classList.toggle('place-card__buttons-like_active');
   }
-  
-//   // функция добавления карточки в html
-  // function addCard2 () {
-  //   cardContainer.append(createCard2());
-  // }
-  
+  const buttonLike = card.querySelector('.place-card__buttons-like');
+  buttonLike.addEventListener('click', like);
+  // открытие попап для картинок
+  function openImg () {
+    document.querySelector('.popup-image__image').src = card.querySelector('.place-card__image').src;
+    document.querySelector('.popup-image__subtitle').textContent = card.querySelector('.place-card__subtitle').textContent;
+    test.classList.toggle('popup-image_opened');
+  }
+  const img = card.querySelector('.place-card__image');
+  img.addEventListener('click', openImg);
+  // удаление карточки из html
+  function removeCard () {
+    card.remove();
+  }
+  const buttonDelete = card.querySelector('.place-card__buttons-delete');
+  buttonDelete.addEventListener('click', removeCard);
+
+  let popUpCardContainer = document.querySelector('.profile-content');
+  let firstChild = popUpCardContainer.firstChild;
+  return popUpCardContainer.insertBefore(card, firstChild);
+}
+
 //   // функция сохранения карточки
   function saveCard2 (evt) {
     evt.preventDefault();
