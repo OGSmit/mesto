@@ -35,14 +35,25 @@
         </div>
       </template>
     </section>
-    <div class="popup">
+    <div class="popup" id="popup_edit-profile">
       <div class="popup__container">
         <button class="popup__buttons-close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="form">
+          <input type="text" class="popup__inputs popup__inputs_type_name" name="name">
+          <input type="text" class="popup__inputs popup__inputs_type_hobby" name="hobby">
+          <button class="popup__buttons-save" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup" id="popup_add-card">
+      <div class="popup__container">
+        <button class="popup__buttons-close" type="button"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form" name="form">
           <input type="text" class="popup__inputs popup__inputs_type_name" placeholder="Название" name="name">
           <input type="text" class="popup__inputs popup__inputs_type_hobby" placeholder="Ссылка на картинку" name="hobby">
-          <button class="popup__buttons-save" type="submit">Сохранить</button>
+          <button class="popup__buttons-save" type="submit">Создать</button>
         </form>
       </div>
     </div>
@@ -57,6 +68,7 @@
   <footer class="footer">
     <p class="footer__subtitle">© 2022 Mesto Russia</p>
   </footer>
+  <script src="./scripts/massive.js" ></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
