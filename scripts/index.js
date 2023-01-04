@@ -1,5 +1,7 @@
 const userTemplate = document.querySelector('#template').content;
-let card = userTemplate.querySelector('.place-card').cloneNode(true);
+
+const card = userTemplate.querySelector('.place-card');
+
 const popupImage = document.querySelector('.popup-image');
 const cardImage = document.querySelector('.popup-image__image');
 const cardSubtitle = document.querySelector('.popup-image__subtitle');
@@ -21,29 +23,26 @@ const profilesColumn = document.querySelector('.profiles__column');
 
 
 // отрисовка массива
-initialCards.forEach((Elem) => {
-  let card = userTemplate.querySelector('.place-card').cloneNode(true);
-  createCard(card);
-  card.querySelector('.place-card__image').alt = 'фотография ' + Elem.name;
-  card.querySelector('.place-card__image').src = Elem.link;
-  card.querySelector('.place-card__subtitle').textContent = Elem.name;
-  return cardContainer.prepend(card);
+initialCards.forEach((Elem,) => {
+  const newCard = card.cloneNode('true');
+  createCard(newCard);
+  newCard.querySelector('.place-card__image').alt = 'фотография ' + Elem.name;
+  newCard.querySelector('.place-card__image').src = Elem.link;
+  newCard.querySelector('.place-card__subtitle').textContent = Elem.name;
+  return cardContainer.prepend(newCard);
 });
 
 // слушатель => отрисовка карточки из popupAddCard
-buttonSavePopupAddCard.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  let card = userTemplate.querySelector('.place-card').cloneNode(true);
-  createCard(card);
-  inputHobbyPopupAddCard.value = '';
-  inputNamePopupAddCard.value = '';
-  closePopup(popupAddCard);
-  return cardContainer.prepend(card);
-});
-// f удаление карточки
-function removeCard (evt) {
-  evt.currentTarget.querySelector('.place-card').remove();
-}
+// buttonSavePopupAddCard.addEventListener('submit', (evt) => {
+//   evt.preventDefault();
+//   let card = userTemplate.querySelector('.place-card').cloneNode(true);
+//   createCard(card);
+//   inputHobbyPopupAddCard.value = '';
+//   inputNamePopupAddCard.value = '';
+//   closePopup(popupAddCard);
+//   return cardContainer.prepend(card);
+// });
+
 // f кнопки лайк
 function like(evt) {
   evt.target.classList.toggle('place-card__buttons-like_active');
@@ -52,7 +51,7 @@ function like(evt) {
 function createCard(card) {
   card.querySelector('.place-card__image').src = inputHobbyPopupAddCard.value;
   card.querySelector('.place-card__subtitle').textContent = inputNamePopupAddCard.value;
-  card.querySelector('.place-card__image').alt = 'изображение' + inputNamePopupAddCard.value;
+  card.querySelector('.place-card__image').alt = inputNamePopupAddCard.value;
   return card;
 }
 // f открытия попапов
@@ -92,7 +91,7 @@ function openPopupImage (evt) {
   openPopup(popupImage);
   cardImage.src = evt.target.src;
   cardImage.alt = evt.target.alt.textContent;
-  cardSubtitle.textContent = evt.currentTarget.querySelector('.place-card__subtitle').textContent;
+  cardSubtitle.textContent = evt.target.alt; // -------
 }
 
 // СЛУШАТЕЛИ:
@@ -110,6 +109,11 @@ profilesColumn.addEventListener('click', function(evt) {
     inputHobbyPopupEditProfile.value = profileSubtitle.textContent;
   }
 });
+
+// f удаление карточки
+function removeCard (evt) {
+  evt.target.closest('.place-card').remove();
+}
 
 // слушатели cardContainer
 cardContainer.addEventListener('click', function(evt) {
@@ -147,8 +151,14 @@ popupAddCard.addEventListener('click', function (evt) {
     closePopup(popupAddCard);
   }
 });
+
 // слушатель на кнопку Создать
-popupAddCard.addEventListener('submit', createCard)
+popupAddCard.addEventListener('submit', () => {
+  const newCard = card.cloneNode('true');
+  createCard(newCard);
+  console.log('ok');
+  return cardContainer.prepend(newCard);
+});
 
 // слушатель кнопки Закрыть PopupImage
 buttonClosePopupImage.addEventListener('click', () => {
