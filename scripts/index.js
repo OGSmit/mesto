@@ -1,9 +1,8 @@
 const userTemplate = document.querySelector('#template').content;
 const card = userTemplate.querySelector('.place-card');
-const popupImage = document.querySelector('.popup-image');
-const cardImage = document.querySelector('.popup-image__image');
-const cardSubtitle = document.querySelector('.popup-image__subtitle');
-const buttonClosePopupImage = popupImage.querySelector('.popup-image__buttons-close');
+const popupImage = document.querySelector('#popup_image');
+const cardImage = document.querySelector('.popup__image');
+const cardSubtitle = document.querySelector('.popup__subtitle');
 const popupEditProfile = document.querySelector('#popup_edit-profile');
 const popupAddCard = document.querySelector('#popup_add-card');
 const buttonSavePopupEditProfile = popupEditProfile.querySelector('.popup__form');
@@ -78,6 +77,10 @@ function openPopupImage (evt) {
   cardImage.src = evt.target.src;
   cardImage.alt = evt.target.alt.textContent;
   cardSubtitle.textContent = evt.target.alt;
+  // слушатель кнопки Закрыть PopupImage
+  popupImage.querySelector('.popup__buttons-close').addEventListener('click', () => {
+  closePopup(popupImage);
+});
 }
 
 // СЛУШАТЕЛИ:
@@ -110,9 +113,4 @@ popupAddCard.addEventListener('submit', (evt) => {
   inputNamePopupAddCard.value ='';
   inputHobbyPopupAddCard.value ='';
   closePopup(popupAddCard);
-});
-
-// слушатель кнопки Закрыть PopupImage
-buttonClosePopupImage.addEventListener('click', () => {
-  closePopup(popupImage);
 });
