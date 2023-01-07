@@ -17,6 +17,20 @@ const buttonAdd = document.querySelector('.profiles__buttons-add');
 const profileName = document.querySelector('.profiles__name');
 const profileSubtitle = document.querySelector('.profiles__subtitle');
 const profilesColumn = document.querySelector('.profiles__column');
+const popupImageButtonClose = popupImage.querySelector('.popup__buttons-close');
+const popupAddCardButtonClose = popupAddCard.querySelector('.popup__buttons-close');
+const popupEditProfileButtonClose = popupEditProfile.querySelector('.popup__buttons-close');
+const form = document.querySelector('.popup__form');
+
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__inputs',
+  submitButtonSelector: '.popup__buttons-save',
+  inactiveButtonClass: 'popup__buttons-save_invalid',
+  inputErrorClass: 'popup__input-error',
+  errorClass: 'popup__input-error_visible',
+};
 
 // отрисовка массива
 initialCards.forEach((card) => { 
@@ -69,6 +83,7 @@ closePopup(popupEditProfile);
 // f открытие popupAddCard
 function openPopupAddCard() {
   openPopup(popupAddCard);
+  toggleButtonState(inputList, buttonElement, config);
 }
 
 // f открытие PopupImage
@@ -77,35 +92,50 @@ function openPopupImage (evt) {
   cardImage.src = evt.target.src;
   cardImage.alt = evt.target.alt.textContent;
   cardSubtitle.textContent = evt.target.alt;
-  // слушатель кнопки Закрыть PopupImage
-  popupImage.querySelector('.popup__buttons-close').addEventListener('click', () => {
-  closePopup(popupImage);
-});
 }
 
+// f 
+function handleSubmit(evt) {
+  evt.preventDefault();
+  console.log({
+    username: inputNamePopupEditProfile.value,
+    hobby: inputHobbyPopupEditProfile.value,
+    place: inputNamePopupAddCard.value,
+    link: inputHobbyPopupAddCard.value,
+  })
+
+}
 // СЛУШАТЕЛИ:
+
+
+// слушатель кнопки Закрыть PopupImage
+popupImageButtonClose.addEventListener('click', () => {
+closePopup(popupImage);
+});
 
 // на кнопку Редактировать
 buttonEdit.addEventListener('click', () => {
   openPopup(popupEditProfile);
   inputNamePopupEditProfile.value = profileName.textContent;
   inputHobbyPopupEditProfile.value = profileSubtitle.textContent;
-  popupEditProfile.querySelector('.popup__buttons-close').addEventListener('click', () => {
-    closePopup(popupEditProfile);
-  });
 });
-
+// слушатель на кнопку закрыть popupEditProfile
+popupEditProfileButtonClose.addEventListener('click', () => {
+  closePopup(popupEditProfile);
+});
 // слушатель на кнопку Сохранить popupEditProfile
 popupEditProfile.addEventListener('submit', submitPopupEditProfile);
 
 // на кнопку Добавить
 buttonAdd.addEventListener('click', () => {
   openPopup(popupAddCard);
-  popupAddCard.querySelector('.popup__buttons-close').addEventListener('click', () => {
-    closePopup(popupAddCard);
-  });
+  inputNamePopupAddCard.value = '';
+  inputHobbyPopupAddCard.value = '';
 });
-
+// слушатель на кнопку Закрыть popupAddCard
+popupAddCardButtonClose.addEventListener('click', () => {
+  closePopup(popupAddCard);
+});
 // слушатель на кнопку Создать
 popupAddCard.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -114,3 +144,9 @@ popupAddCard.addEventListener('submit', (evt) => {
   inputHobbyPopupAddCard.value ='';
   closePopup(popupAddCard);
 });
+
+// слушатель формы
+form.addEventListener('submit', handleSubmit);
+
+
+enableValidation(validationConfig);

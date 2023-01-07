@@ -29,9 +29,25 @@
       <div class="popup__container">
         <button class="popup__buttons-close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form" name="form">
-          <input type="text" class="popup__inputs popup__inputs_type_name" name="name" placeholder="Имя">
-          <input type="text" class="popup__inputs popup__inputs_type_hobby" name="hobby" placeholder="Вид деятельности">
+        <form class="popup__form" name="form" novalidate>
+          <input id="username"
+                 type="text"
+                 class="popup__inputs popup__inputs_type_name" 
+                 name="name"
+                 placeholder="Имя"
+                 minlength="2"
+                 maxlength="40"
+                 required>
+          <span class="username-error popup__input-error"></span>
+          <input id="hobby"
+                 type="text"
+                 class="popup__inputs popup__inputs_type_hobby"
+                 name="hobby"
+                 placeholder="Вид деятельности"
+                 minlength="2"
+                 maxlength="200"
+                 required>
+          <span class="hobby-error popup__input-error"></span>
           <button class="popup__buttons-save" type="submit">Сохранить</button>
         </form>
       </div>
@@ -40,10 +56,24 @@
       <div class="popup__container">
         <button class="popup__buttons-close" type="button"></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form" name="form">
-          <input type="text" class="popup__inputs popup__inputs_type_name" placeholder="Название" name="name" required>
-          <input type="text" class="popup__inputs popup__inputs_type_hobby" placeholder="Ссылка на картинку" name="hobby" required>
-          <button class="popup__buttons-save" type="submit">Создать</button>
+        <form class="popup__form" name="form" novalidate>
+          <input type="text"
+                 id="place"
+                 class="popup__inputs popup__inputs_type_name"
+                 placeholder="Название"
+                 name="name"
+                 minlength="2"
+                 maxlength="40"
+                 required>
+          <span class="place-error popup__input-error"></span>
+          <input type="url"
+                 id="link"
+                 class="popup__inputs popup__inputs_type_hobby" 
+                 placeholder="Ссылка на картинку" 
+                 name="hobby"
+                 required>
+          <span class="link-error popup__input-error"></span>
+          <button class="popup__buttons-save popup__buttons-save_invalid" type="submit">Создать</button>
         </form>
       </div>
     </div>
@@ -69,6 +99,7 @@
     <p class="footer__subtitle">© 2022 Mesto Russia</p>
   </footer>
   <script src="./scripts/massive.js" ></script>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
