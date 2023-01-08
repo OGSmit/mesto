@@ -22,7 +22,6 @@ const popupAddCardButtonClose = popupAddCard.querySelector('.popup__buttons-clos
 const popupEditProfileButtonClose = popupEditProfile.querySelector('.popup__buttons-close');
 const form = document.querySelector('.popup__form');
 
-
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__inputs',
@@ -64,12 +63,36 @@ function createCard(name, link) {
 
 // f открытия попапов
 function openPopup(popup) { 
-  popup.classList.add('popup_opened'); 
+  popup.classList.add('popup_opened');
+//  слушатель закрытия попап по клику вне контейнера
+  popup.addEventListener('click', (evt) => {
+    if (!evt.target.closest('.popup__container_target')) {
+      closePopup(popup);
+    }
+  })
+ // слушатель закрытия попап по нажатии Esc
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  })
 }
 
 // f закрытия попапов
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+// удаление  слушатель закрытия попап по клику вне контейнера
+  popup.removeEventListener('click', (evt) => {
+    if (!evt.target.closest('.popup__container')) {
+      closePopup(popup);
+    }
+  })
+// удаление слушатель закрытия попап по нажатии Esc
+document.removeEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup(popup);
+  }
+})
 }
 
 // f открытие popupEditProfile
@@ -147,6 +170,5 @@ popupAddCard.addEventListener('submit', (evt) => {
 
 // слушатель формы
 form.addEventListener('submit', handleSubmit);
-
-
+// подключаем валидацию
 enableValidation(validationConfig);
