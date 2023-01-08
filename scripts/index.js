@@ -66,7 +66,7 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 //  слушатель закрытия попап по клику вне контейнера
   popup.addEventListener('click', (evt) => {
-    if (!evt.target.closest('.popup__container_target')) {
+    if (!evt.target.closest('.popup__container_type_target')) {
       closePopup(popup);
     }
   })
@@ -83,7 +83,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 // удаление  слушатель закрытия попап по клику вне контейнера
   popup.removeEventListener('click', (evt) => {
-    if (!evt.target.closest('.popup__container')) {
+    if (!evt.target.closest('.popup__container_type_target')) {
       closePopup(popup);
     }
   })
