@@ -1,3 +1,8 @@
 .popup__buttons-save_invalid {
   opacity: .2;
 }
+
+.popup__buttons-save_invalid:hover {
+  cursor: auto;
+  opacity: .2;
+}
