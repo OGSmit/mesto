@@ -132,6 +132,9 @@ popupAddCardForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   cardContainer.prepend(createCard(inputNamePopupAddCard.value, inputHobbyPopupAddCard.value));
   popupAddCardForm.reset();
+  const button = evt.submitter;
+  button.disabled = true;
+  button.classList.add('popup__buttons-save_invalid');
   closePopup(popupAddCard);
 });
 
