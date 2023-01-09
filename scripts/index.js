@@ -136,19 +136,19 @@ popupAddCardForm.addEventListener('submit', (evt) => {
 });
 
 //  слушатели закрытия попап по клику вне контейнера
-popupEditProfile.addEventListener('click', (evt) => {
+popupEditProfile.addEventListener('mousedown', (evt) => {
   if (!evt.target.closest('.popup__container_target')) {
     closePopup(popupEditProfile);
   }
 })
 
-popupAddCard.addEventListener('click', (evt) => {
+popupAddCard.addEventListener('mousedown', (evt) => {
   if (!evt.target.closest('.popup__container_target')) {
     closePopup(popupAddCard);
   }
 })
 
-popupImage.addEventListener('click', (evt) => {
+popupImage.addEventListener('mousedown', (evt) => {
   if (!evt.target.closest('.popup__container_target')) {
     closePopup(popupImage);
   }
