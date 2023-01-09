@@ -3,6 +3,7 @@ function showInputError(formElement, inputElement, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   errorElement.classList.add(config.errorClass);
   errorElement.textContent = inputElement.validationMessage;
+  inputElement.classList.add('popup__inputs_type_error');
 };
 
 function hideInputError(formElement, inputElement, config) {
