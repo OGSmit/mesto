@@ -3,13 +3,14 @@ function showInputError(formElement, inputElement, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   errorElement.classList.add(config.errorClass);
   errorElement.textContent = inputElement.validationMessage;
-  inputElement.classList.add('popup__inputs_type_error');
+  inputElement.classList.add(config.typeError);
 };
 
 function hideInputError(formElement, inputElement, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   errorElement.classList.remove(config.errorClass);
   errorElement.textContent = '';
+  inputElement.classList.remove(config.typeError);
 };
 
 function checkInputValidity(formElement, inputElement, config) {

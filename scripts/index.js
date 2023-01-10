@@ -30,6 +30,7 @@ const validationConfig = {
   inactiveButtonClass: 'popup__buttons-save_invalid',
   inputErrorClass: 'popup__input-error',
   errorClass: 'popup__input-error_visible',
+  typeError : 'popup__inputs_type_error',
 };
 
 // отрисовка массива
