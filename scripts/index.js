@@ -17,11 +17,13 @@ const buttonAdd = document.querySelector('.profiles__buttons-add');
 const profileName = document.querySelector('.profiles__name');
 const profileSubtitle = document.querySelector('.profiles__subtitle');
 const profilesColumn = document.querySelector('.profiles__column');
-const popupImageButtonClose = popupImage.querySelector('.popup__buttons-close');
-const popupAddCardButtonClose = popupAddCard.querySelector('.popup__buttons-close');
-const popupEditProfileButtonClose = popupEditProfile.querySelector('.popup__buttons-close');
+// const popupImageButtonClose = popupImage.querySelector('.popup__buttons-close');
+// const popupAddCardButtonClose = popupAddCard.querySelector('.popup__buttons-close');
+// const popupEditProfileButtonClose = popupEditProfile.querySelector('.popup__buttons-close');
 const popupAddCardForm = popupAddCard.querySelector('.popup__form');
 const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
+const buttonCloseList = document.querySelectorAll('.popup__buttons-close');
+
 
 const validationConfig = {
   formSelector: '.popup__form',
@@ -101,20 +103,11 @@ function openPopupImage (name, link) {
 
 // СЛУШАТЕЛИ:
 
-// слушатель кнопки Закрыть PopupImage
-popupImageButtonClose.addEventListener('click', () => {
-closePopup(popupImage);
-});
-
 // на кнопку Редактировать
 buttonEdit.addEventListener('click', () => {
   openPopup(popupEditProfile);
   inputNamePopupEditProfile.value = profileName.textContent;
   inputHobbyPopupEditProfile.value = profileSubtitle.textContent;
-});
-// слушатель на кнопку закрыть popupEditProfile
-popupEditProfileButtonClose.addEventListener('click', () => {
-  closePopup(popupEditProfile);
 });
 // слушатель на кнопку Сохранить popupEditProfile
 popupEditProfileForm.addEventListener('submit', submitPopupEditProfile);
@@ -123,10 +116,7 @@ popupEditProfileForm.addEventListener('submit', submitPopupEditProfile);
 buttonAdd.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
-// слушатель на кнопку Закрыть popupAddCard
-popupAddCardButtonClose.addEventListener('click', () => {
-  closePopup(popupAddCard);
-});
+
 // слушатель на кнопку Создать
 popupAddCardForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -138,25 +128,15 @@ popupAddCardForm.addEventListener('submit', (evt) => {
   closePopup(popupAddCard);
 });
 
-//  слушатели закрытия попап по клику вне контейнера
-popupEditProfile.addEventListener('mousedown', (evt) => {
-  if (!evt.target.closest('.popup__container_target')) {
-    closePopup(popupEditProfile);
-  }
-})
-
-popupAddCard.addEventListener('mousedown', (evt) => {
-  if (!evt.target.closest('.popup__container_target')) {
-    closePopup(popupAddCard);
-  }
-})
-
-popupImage.addEventListener('mousedown', (evt) => {
-  if (!evt.target.closest('.popup__container_target')) {
-    closePopup(popupImage);
-  }
-})
-
 // подключаем валидацию
 enableValidation(validationConfig);
 
+// можно лучше
+buttonCloseList.forEach(btn => {
+  const popup = btn.closest('.popup');
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup')) {
+      closePopup(popup);
+}});
+  btn.addEventListener('click', () => closePopup(popup)); 
+});
