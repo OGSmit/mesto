@@ -17,9 +17,6 @@ const buttonAdd = document.querySelector('.profiles__buttons-add');
 const profileName = document.querySelector('.profiles__name');
 const profileSubtitle = document.querySelector('.profiles__subtitle');
 const profilesColumn = document.querySelector('.profiles__column');
-// const popupImageButtonClose = popupImage.querySelector('.popup__buttons-close');
-// const popupAddCardButtonClose = popupAddCard.querySelector('.popup__buttons-close');
-// const popupEditProfileButtonClose = popupEditProfile.querySelector('.popup__buttons-close');
 const popupAddCardForm = popupAddCard.querySelector('.popup__form');
 const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
 const buttonCloseList = document.querySelectorAll('.popup__buttons-close');
@@ -37,7 +34,7 @@ const validationConfig = {
 
 // отрисовка массива
 initialCards.forEach((card) => { 
-  cardContainer.prepend(createCard(card.name, card.link)); 
+  cardContainer.prepend(createCard(card.name, card.link));
 }); 
 
 // Функции:
@@ -70,7 +67,8 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
   // слушатель закрытия попап по нажатии Esc
   document.addEventListener('keydown', closeByEsc);
-}  
+}
+
 // f закрытие попап по кнопке Esc
 function closeByEsc(evt) {
   if (evt.key === 'Escape') {
