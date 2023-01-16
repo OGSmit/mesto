@@ -1,3 +1,5 @@
+
+
 // логика взята с вебинара
 function showInputError(formElement, inputElement, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
