@@ -1,5 +1,5 @@
 import {Card} from './Card.js';
-import { initialCards } from './massive.js';
+import {initialCards} from './massive.js';
 
 initialCards.forEach( (item) => {
   Card.renderCard(item.name, item.link);
@@ -19,7 +19,6 @@ const inputNamePopupEditProfile = popupEditProfile.querySelector('.popup__inputs
 const inputHobbyPopupEditProfile = popupEditProfile.querySelector('.popup__inputs_type_hobby');
 const inputNamePopupAddCard = popupAddCard.querySelector('.popup__inputs_type_name');
 const inputHobbyPopupAddCard = popupAddCard.querySelector('.popup__inputs_type_hobby');
-const cardContainer = document.querySelector('.profile-content');
 const buttonEdit = document.querySelector('.profiles__buttons-edit');
 const buttonAdd = document.querySelector('.profiles__buttons-add');
 const profileName = document.querySelector('.profiles__name');

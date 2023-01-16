@@ -26,7 +26,7 @@ export class Card {
     return this._element;
   }
   
-  static renderCard (name, link) { // что за static ? 
+  static renderCard (name, link) { // что за static ? без него не работает !
     const card = new Card(name, link, '#template');
     const cardElement = card._generateCard();
     cardContainer.prepend(cardElement);
