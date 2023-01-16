@@ -1,4 +1,4 @@
-import { initialCards } from './massive.js';
+
 
 const cardContainer = document.querySelector('.profile-content');
 
@@ -26,13 +26,10 @@ export class Card {
     return this._element;
   }
   
-  static renderCard () { // что за static ? 
-    initialCards.forEach((data) => {
-      const card = new Card(data.name, data.link, '#template');
-      const cardElement = card._generateCard();
-      
-      cardContainer.prepend(cardElement);
-    });
+  static renderCard (name, link) { // что за static ? 
+    const card = new Card(name, link, '#template');
+    const cardElement = card._generateCard();
+    cardContainer.prepend(cardElement);
   }
 
   _like(evt) {
@@ -60,6 +57,9 @@ export class Card {
   _openPopupImage() {
     const popupImage = document.querySelector('#popup_image');
     popupImage.classList.add('popup_opened');
+    popupImage.querySelector('.popup__image').src = this._link;
+    popupImage.querySelector('.popup__image').alt = this._name;
+    popupImage.querySelector('.popup__subtitle').textContent = this._name;
     const buttonClose = popupImage.querySelector('.popup__buttons-close');
     buttonClose.addEventListener('click', () => {
       popupImage.classList.remove('popup_opened');
