@@ -1,5 +1,3 @@
-
-
 const cardContainer = document.querySelector('.profile-content');
 
 export class Card {

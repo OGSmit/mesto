@@ -1,5 +1,6 @@
 import {Card} from './Card.js';
 import {initialCards} from './massive.js';
+import {FormValidator, validationConfig} from './FormValidator.js';
 
 initialCards.forEach( (item) => {
   Card.renderCard(item.name, item.link);
@@ -26,19 +27,8 @@ const profileSubtitle = document.querySelector('.profiles__subtitle');
 // const profilesColumn = document.querySelector('.profiles__column');
 const popupAddCardForm = popupAddCard.querySelector('.popup__form');
 const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
-// const buttonCloseList = document.querySelectorAll('.popup__buttons-close');
-
-
-// const validationConfig = {
-//   formSelector: '.popup__form',
-//   inputSelector: '.popup__inputs',
-//   submitButtonSelector: '.popup__buttons-save',
-//   inactiveButtonClass: 'popup__buttons-save_invalid',
-//   inputErrorClass: 'popup__input-error',
-//   errorClass: 'popup__input-error_visible',
-//   typeError : 'popup__inputs_type_error',
-// };
-
+const buttonCloseList = document.querySelectorAll('.popup__buttons-close');
+const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
 // // отрисовка массива
 // initialCards.forEach((card) => { 
 //   cardContainer.prepend(createCard(card.name, card.link));
@@ -119,12 +109,24 @@ popupAddCardForm.addEventListener('submit', (evt) => {
 // // подключаем валидацию
 // enableValidation(validationConfig);
 
-// // можно лучше
-// buttonCloseList.forEach(btn => {
-//   const popup = btn.closest('.popup');
-//   popup.addEventListener('mousedown', (evt) => {
-//     if (evt.target.classList.contains('popup')) {
-//       closePopup(popup);
-// }});
-//   btn.addEventListener('click', () => closePopup(popup)); 
-// });
+// можно лучше
+buttonCloseList.forEach(btn => {
+  const popup = btn.closest('.popup');
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup')) {
+      closePopup(popup);
+}});
+  btn.addEventListener('click', () => closePopup(popup)); 
+});
+
+
+  // formList.forEach((formElement) => {
+  //   FormValidator.setEventListener(formElement, validationConfig);
+  // });
+
+
+  const poppupValid = new FormValidator();
+
+  poppupValid.setEventListener(popupAddCard, validationConfig);
+
+
