@@ -1,33 +1,29 @@
-const cardContainer = document.querySelector('.profile-content');
-
 export class Card {
-  constructor(name, link, templateSelector) {
+  constructor(name, link, templateSelector, handleCardClick) {
     this._templateSelector = templateSelector;
     this._name = name;
     this._link = link;
+    this._alt = `Изображение ${name}`;
+    this._element = this._getTemplate();
+    this._popupImage = document.querySelector('#popup_image');
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
-    const cardElement = document
+    const cardClone = document
       .querySelector(this._templateSelector)
       .content
       .querySelector('.place-card')
       .cloneNode(true);
-    return cardElement;
+    return cardClone;
   }
    
   _generateCard() {
-    this._element = this._getTemplate();
     this._element.querySelector('.place-card__subtitle').textContent = this._name;
     this._element.querySelector('.place-card__image').src = this._link;
+    this._element.querySelector('.place-card__image').alt = this._alt;
     this._setEventListener();
     return this._element;
-  }
-  
-  static renderCard (name, link) { // что за static ? без него не работает !
-    const card = new Card(name, link, '#template');
-    const cardElement = card._generateCard();
-    cardContainer.prepend(cardElement);
   }
 
   _like(evt) {
@@ -38,40 +34,15 @@ export class Card {
     this._element.querySelector('.place-card__buttons-like').addEventListener('click', (evt) => {
       this._like(evt);
     });
-
     this._element.querySelector('.place-card__buttons-delete').addEventListener('click', (evt) => {
       this._removeCard(evt);
     })
-
-    this._element.querySelector('.place-card__image').addEventListener('click', (evt) => {
-      this._openPopupImage(evt);
+    this._element.querySelector('.place-card__image').addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link);
     })
   }
 
   _removeCard(evt) {
     evt.target.closest('.place-card').remove();
   }
-
-  _openPopupImage() {
-    const popupImage = document.querySelector('#popup_image');
-    popupImage.classList.add('popup_opened');
-    popupImage.querySelector('.popup__image').src = this._link;
-    popupImage.querySelector('.popup__image').alt = this._name;
-    popupImage.querySelector('.popup__subtitle').textContent = this._name;
-    const buttonClose = popupImage.querySelector('.popup__buttons-close');
-    buttonClose.addEventListener('click', () => {
-      popupImage.classList.remove('popup_opened');
-    });
-
-    popupImage.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup')) {
-        popupImage.classList.remove('popup_opened');
-      }
-    });
-
-   document.addEventListener('keydown', (evt) => {
-     if (evt.key === 'Escape') {
-      popupImage.classList.remove('popup_opened');
-     }
-   });
-}}
+}
