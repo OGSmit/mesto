@@ -18,6 +18,7 @@ const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
 const buttonCloseList = document.querySelectorAll('.popup__buttons-close');
 const cardContainer = document.querySelector('.profile-content');
 const buttonCreate = popupAddCard.querySelector('.popup__buttons-save');
+const popupImage = popupFromImage.querySelector('.popup__image');
 
 initialCards.forEach((item) => {
  cardContainer.prepend(createCard(item));
@@ -56,18 +57,24 @@ closePopup(popupEditProfile);
 // f createCard
 function createCard(item) {
   const card = new Card(item.name, item.link, '#template', handleCardClick);
-  const cardElement = card._generateCard();
-  return cardElement
+  return card.cardElement
 }
 
 // f handleCardClick
 function handleCardClick (name, link) {
-  popupFromImage.querySelector('.popup__image').src = link;
-  popupFromImage.querySelector('.popup__image').alt = name;
+  popupImage.src = link;
+  popupImage.alt = name;
   popupFromImage.querySelector('.popup__subtitle').textContent = name;
   openPopup(popupFromImage);
 }
 
+// f Inputs to Object ))
+function inputsToObject ( name, link) {
+  const object = new Object();
+  object.name = name;
+  object.link = link;
+  return object;
+}
 // // СЛУШАТЕЛИ:
 
 // на кнопку Редактировать
@@ -75,6 +82,7 @@ buttonEdit.addEventListener('click', () => {
   openPopup(popupEditProfile);
   inputNamePopupEditProfile.value = profileName.textContent;
   inputHobbyPopupEditProfile.value = profileSubtitle.textContent;
+  popupEditProfileWithValidation.disabledButton();
 });
 // слушатель на кнопку Сохранить popupEditProfile
 popupEditProfileForm.addEventListener('submit', submitPopupEditProfile);
@@ -82,16 +90,14 @@ popupEditProfileForm.addEventListener('submit', submitPopupEditProfile);
 // на кнопку Добавить
 buttonAdd.addEventListener('click', () => {
   openPopup(popupAddCard);
-  buttonCreate.classList.add('popup__buttons-save_invalid');
-  buttonCreate.disabled = true;
+  popupAddCardWithValidation.disabledButton();
 });
 
 // слушатель на кнопку Создать
 popupAddCardForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  const card = new Card(inputNamePopupAddCard.value, inputHobbyPopupAddCard.value, '#template', handleCardClick);
-  const cardElement = card._generateCard();
-  cardContainer.prepend(cardElement);
+  const obj = inputsToObject(inputNamePopupAddCard.value, inputHobbyPopupAddCard.value);
+  cardContainer.prepend(createCard(obj));
   popupAddCardForm.reset();
   closePopup(popupAddCard);
 });

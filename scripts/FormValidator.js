@@ -61,6 +61,11 @@ _setEventListener() {
   });
  };
 
+ disabledButton() {
+    this._buttonElement.classList.add(this._config.inactiveButtonClass);
+    this._buttonElement.disabled = true;
+ }
+
  enableValidation() {
   this._toggleButtonState(this._buttonElement);
   this._setEventListener();

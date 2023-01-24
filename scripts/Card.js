@@ -7,6 +7,7 @@ export class Card {
     this._element = this._getTemplate();
     this._popupImage = document.querySelector('#popup_image');
     this._handleCardClick = handleCardClick;
+    this.cardElement = this._generateCard();
   }
 
   _getTemplate() {
