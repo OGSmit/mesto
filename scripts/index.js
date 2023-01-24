@@ -18,6 +18,7 @@ const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
 const buttonCloseList = document.querySelectorAll('.popup__buttons-close');
 const cardContainer = document.querySelector('.profile-content');
 const popupImage = popupFromImage.querySelector('.popup__image');
+const popupSubtitle = popupFromImage.querySelector('.popup__subtitle');
 
 initialCards.forEach((item) => {
  cardContainer.prepend(createCard(item));
@@ -63,7 +64,7 @@ function createCard(item) {
 function handleCardClick (name, link) {
   popupImage.src = link;
   popupImage.alt = name;
-  popupFromImage.querySelector('.popup__subtitle').textContent = name;
+  popupSubtitle.textContent = name;
   openPopup(popupFromImage);
 }
 
