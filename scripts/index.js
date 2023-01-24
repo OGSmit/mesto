@@ -17,7 +17,6 @@ const popupAddCardForm = popupAddCard.querySelector('.popup__form');
 const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
 const buttonCloseList = document.querySelectorAll('.popup__buttons-close');
 const cardContainer = document.querySelector('.profile-content');
-const buttonCreate = popupAddCard.querySelector('.popup__buttons-save');
 const popupImage = popupFromImage.querySelector('.popup__image');
 
 initialCards.forEach((item) => {
