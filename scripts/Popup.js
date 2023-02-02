@@ -52,17 +52,27 @@ export class PopupWithImage extends Popup {
 }
 
 export class PopupWithForm extends Popup {
-  constructor(popupSelectort, callBackSubmit) {
+  constructor(popupSelectort, callBackSubmit, profileName, profileSubtitle) {
     super(popupSelectort);
     this._callBackSubmit = callBackSubmit;
+    this._profileSubtitle = profileSubtitle.textContent;
+    this._profileName = profileName.textContent;
   }
 
-  _getInputValues() {
-
-  }
+  // _getInputValues() {
+  //  this._inputName = this._popupBySelector.querySelector('.popup__inputs_type_name').value;
+  //  this._inputHobby = this._popupBySelector.querySelector('.popup__inputs_type_hobby').value;
+  // }
 
   setEventListeners() {
     // должен не только добавлять обработчик клика иконке закрытия, но и добавлять обработчик сабмита формы.
+  }
+
+  open() {
+    super.open();
+    // this._getInputValues();
+    this._popupBySelector.querySelector('.popup__inputs_type_name').value = this._profileName;
+    this._popupBySelector.querySelector('.popup__inputs_type_hobby').value = this._profileSubtitle;
   }
 
   close() {
