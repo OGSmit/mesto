@@ -19,3 +19,25 @@
     padding-bottom: 60px;
   }
 }
+
+.gridContainer{
+  display: grid;
+  
+  /* grid-template-areas: 
+  "links links links links links"
+  "text text text"
+  "ima"; */
+}
+
+.links {
+  grid-area: links;
+  color: white;
+}
+
+.text {
+  grid-area: text;
+}
+
+.ima {
+  grid-area: ima;
+}

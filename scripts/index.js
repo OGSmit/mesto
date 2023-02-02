@@ -77,6 +77,14 @@ function inputsToObject ( name, link) {
 }
 // // СЛУШАТЕЛИ:
 
+// слушатель на кнопку Создать
+popupAddCardForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const obj = inputsToObject(inputNamePopupAddCard.value, inputHobbyPopupAddCard.value);
+  cardContainer.prepend(createCard(obj));
+  popupAddCardForm.reset();
+  closePopup(popupAddCard);
+});
 // на кнопку Редактировать
 buttonEdit.addEventListener('click', () => {
   openPopup(popupEditProfile);
@@ -93,14 +101,6 @@ buttonAdd.addEventListener('click', () => {
   popupAddCardWithValidation.disabledButton();
 });
 
-// слушатель на кнопку Создать
-popupAddCardForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  const obj = inputsToObject(inputNamePopupAddCard.value, inputHobbyPopupAddCard.value);
-  cardContainer.prepend(createCard(obj));
-  popupAddCardForm.reset();
-  closePopup(popupAddCard);
-});
 
 // можно лучше
 buttonCloseList.forEach(btn => {
