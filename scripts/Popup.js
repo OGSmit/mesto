@@ -28,7 +28,11 @@ export class Popup {
       if (evt.target.classList.contains('popup')) {
         this.close();
       }
-    })
+    });
+
+    this._popupBySelector.querySelector('.popup__buttons-close').addEventListener('click', () => {
+      this.close();
+    });
   }
 }
 
@@ -42,7 +46,6 @@ export class PopupWithImage extends Popup {
   }
 
   open() {
-    // В методе open класса PopupWithImage нужно вставлять в попап картинку с src изображения и подписью к картинке.
     super.open();
     this._imageFromPopup.src = this._link;
     this._imageFromPopup.alt = this._name;
@@ -51,30 +54,37 @@ export class PopupWithImage extends Popup {
 }
 
 export class PopupWithForm extends Popup {
-  constructor(popupSelectort, callBackSubmit, profileName, profileSubtitle) {
+  constructor(popupSelectort, callBackSubmit) {
     super(popupSelectort);
     this._callBackSubmit = callBackSubmit;
-    this._profileSubtitle = profileSubtitle.textContent;
-    this._profileName = profileName.textContent;
+    this._form = this._popupBySelector.querySelector('.popup__form');
   }
 
-  // _getInputValues() {
-  //  this._inputName = this._popupBySelector.querySelector('.popup__inputs_type_name').value;
-  //  this._inputHobby = this._popupBySelector.querySelector('.popup__inputs_type_hobby').value;
-  // }
+  _getInputValues() {
+    this._obj = {};
+    this._inputName = this._popupBySelector.querySelector('.popup__inputs_type_name').value;
+    this._inputHobby = this._popupBySelector.querySelector('.popup__inputs_type_hobby').value;
+    this._obj.name = this._inputName;
+    this._obj.link = this._inputHobby;
+    return this._obj;
+  };
 
   setEventListeners() {
-    // должен не только добавлять обработчик клика иконке закрытия, но и добавлять обработчик сабмита формы.
+    this._form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      this._callBackSubmit(this._getInputValues());
+      this._form.reset();
+      this.close();
+    });
   }
 
   open() {
-    super.open();
-    // this._getInputValues();
-    this._popupBySelector.querySelector('.popup__inputs_type_name').value = this._profileName;
-    this._popupBySelector.querySelector('.popup__inputs_type_hobby').value = this._profileSubtitle;
+    super.open()
   }
 
   close() {
-    //так как при закрытии попапа форма должна ещё и сбрасываться.
+    super.close();
+    this._form.reset();
   }
+
 }

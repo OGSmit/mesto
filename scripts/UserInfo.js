@@ -1,14 +1,18 @@
 export default class UserInfo {
-  constructor({name, info}) {
-    this._name = name;
-    this._info = info;
+  constructor({name, hobby}) {
+    this._dataName = document.querySelector(name).textContent; // string
+    this._dataHobby = document.querySelector(hobby).textContent; // string
   }
 
   getUserInfo() {
-//возвращает объект с данными пользователя. Этот метод пригодится когда данные пользователя нужно будет подставить в форму при открытии.
+    this._obj = new Object();
+    this._obj.name = this._dataName;
+    this._obj.hobby = this._dataHobby;
+    return this._obj;
   }
 
-  setUserInfo() {
-//kоторый принимает новые данные пользователя и добавляет их на страницу.
+  setUserInfo(data) {
+    this._dataName = data.name;
+    this._dataHobby = data.link;
   }
 }
