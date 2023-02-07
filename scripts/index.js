@@ -36,8 +36,9 @@ function createCard(item) {
 }
 
 function callbackForPopupProfile(objectFromInputs) {
-  console.log(objectFromInputs);
-  userInfo.setUserInfo(objectFromInputs);
+  // Не нашел способа передать данные инпутов по другому
+  const userInfo = new UserInfo({name: '.profiles__name', hobby: '.profiles__subtitle'}, objectFromInputs);
+  userInfo.setUserInfo();
 }
 
 function callbackForPopupAddCard(objectFromInputs) {
