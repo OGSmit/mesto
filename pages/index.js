@@ -1,10 +1,11 @@
 import '.././pages/index.css';
 import {Card} from '../components/Card.js';
-import {initialCards} from './massive.js';
-import {FormValidator, validationConfig} from './FormValidator.js';
-import {PopupWithImage, PopupWithForm} from './Popup.js';
-import Section from './Section.js';
-import UserInfo from './UserInfo.js';
+import {initialCards} from '../scripts/massive.js';
+import {FormValidator} from '../scripts/FormValidator.js';
+import validationConfig from '../utils/constants.js'
+import {PopupWithImage, PopupWithForm} from '../scripts/Popup.js';
+import Section from '../scripts/Section.js';
+import UserInfo from '../scripts/UserInfo.js';
 
 // Константы
 const popupEditProfile = document.querySelector('#popup_edit-profile');
@@ -17,8 +18,8 @@ const buttonAdd = document.querySelector('.profiles__buttons-add');
 // Экземпляры
 const popupEditProfileWithValidation = new FormValidator(validationConfig, popupEditProfile);
 const popupAddCardWithValidation = new FormValidator(validationConfig, popupAddCard);
-const popupProfile = new PopupWithForm('#popup_edit-profile', callbackForPopupProfile);
-const popupCard = new PopupWithForm('#popup_add-card', callbackForPopupAddCard);
+const popupProfile = new PopupWithForm('#popup_edit-profile', handleSubmitProfilePopupForm);
+const popupCard = new PopupWithForm('#popup_add-card', handleSubmitAddCardPopupForm);
 const section = new Section({
   items: initialCards,
   renderer: (item) => {
@@ -36,13 +37,13 @@ function createCard(item) {
   return card.cardElement
 }
 
-function callbackForPopupProfile(objectFromInputs) {
+function handleSubmitProfilePopupForm(objectFromInputs) {
   // Не нашел способа передать данные инпутов по другому
   const userInfo = new UserInfo({name: '.profiles__name', hobby: '.profiles__subtitle'}, objectFromInputs);
   userInfo.setUserInfo();
 }
 
-function callbackForPopupAddCard(objectFromInputs) {
+function handleSubmitAddCardPopupForm(objectFromInputs) {
   section.addItem(createCard(objectFromInputs));
 }
 

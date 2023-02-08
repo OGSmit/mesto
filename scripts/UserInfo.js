@@ -1,21 +1,21 @@
 export default class UserInfo {
-  constructor({name, hobby}, data) {
-    this._dataName = name;
+  constructor({name, hobby}) {
+    this._dataName = document.querySelector(name);
     // this._dataName = document.querySelector(name).textContent
-    this._dataHobby = hobby;
-    this._data = data;
+    this._dataHobby = document.querySelector(hobby);
   }
 // Дублирование строк не удалось избежать т.к.
 //  переменная конструктора this._dataName = document.querySelector(name).textContent работала некорректно
   getUserInfo() {
-    this._objectFromInputs = {};
-    this._objectFromInputs.name = document.querySelector(this._dataName).textContent;
-    this._objectFromInputs.hobby = document.querySelector(this._dataHobby).textContent;
-    return this._objectFromInputs;
+    return {
+      name: this._dataName.textContent,
+      hobby: this._dataHobby.textContent
+    };
   }
 
-  setUserInfo() {
-    document.querySelector(this._dataName).textContent = this._data.name;
-    document.querySelector(this._dataHobby).textContent = this._data.link;
+  setUserInfo(data) {
+    this._data = data;
+    this._dataName.textContent = this._data.name;
+    this._dataHobby.textContent = this._data.link;
   }
 }

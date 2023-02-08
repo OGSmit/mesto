@@ -6,20 +6,20 @@ export class Card {
     this._alt = `Изображение ${name}`;
     this._element = this._getTemplate();
     this._handleCardClick = handleCardClick;
-    this.cardElement = this._generateCard();
-    this._cardImage = this._element.querySelector('.place-card__image');
+    this._cardElement = this._generateCard();
   }
-
+  
   _getTemplate() {
     const cardClone = document
-      .querySelector(this._templateSelector)
-      .content
-      .querySelector('.place-card')
-      .cloneNode(true);
+    .querySelector(this._templateSelector)
+    .content
+    .querySelector('.place-card')
+    .cloneNode(true);
     return cardClone;
   }
-   
+  
   _generateCard() {
+    this._cardImage = this._element.querySelector('.place-card__image');
     this._element.querySelector('.place-card__subtitle').textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._alt;

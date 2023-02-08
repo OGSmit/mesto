@@ -1,13 +1,3 @@
-export const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__inputs',
-  submitButtonSelector: '.popup__buttons-save',
-  inactiveButtonClass: 'popup__buttons-save_invalid',
-  inputErrorClass: 'popup__input-error',
-  errorClass: 'popup__input-error_visible',
-  typeError : 'popup__inputs_type_error',
-};
-
 export class FormValidator {
   constructor (config, formElement) {
     this._config = config;
@@ -44,8 +34,7 @@ export class FormValidator {
   
   _toggleButtonState() {
     if (this._hasInvalidInput(this._inputList)) {
-      this._buttonElement.classList.add(this._config.inactiveButtonClass);
-      this._buttonElement.disabled = true;
+      this.disabledButton();
   } else {
     this._buttonElement.classList.remove(this._config.inactiveButtonClass);
     this._buttonElement.disabled = false;
