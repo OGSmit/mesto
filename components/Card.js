@@ -5,9 +5,9 @@ export class Card {
     this._link = link;
     this._alt = `Изображение ${name}`;
     this._element = this._getTemplate();
-    this._popupImage = document.querySelector('#popup_image');
     this._handleCardClick = handleCardClick;
     this.cardElement = this._generateCard();
+    this._cardImage = this._element.querySelector('.place-card__image');
   }
 
   _getTemplate() {
@@ -21,8 +21,8 @@ export class Card {
    
   _generateCard() {
     this._element.querySelector('.place-card__subtitle').textContent = this._name;
-    this._element.querySelector('.place-card__image').src = this._link;
-    this._element.querySelector('.place-card__image').alt = this._alt;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._alt;
     this._setEventListener();
     return this._element;
   }
@@ -44,6 +44,7 @@ export class Card {
   }
 
   _removeCard(evt) {
-    evt.target.closest('.place-card').remove();
+    // evt.target.closest('.place-card').remove();
+    this._element = null;
   }
 }
