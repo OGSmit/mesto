@@ -8,10 +8,6 @@ export class PopupWithForm extends Popup {
 
   _getInputValues() {
     this._obj = {};
-    // this._inputName = this._popupBySelector.querySelector('.popup__inputs_type_name').value;
-    // this._inputHobby = this._popupBySelector.querySelector('.popup__inputs_type_hobby').value;
-    // this._obj.name = this._inputName;
-    // this._obj.link = this._inputHobby;
     this._inputList = this._popupBySelector.querySelectorAll('popup__inputs');
     this._inputList.forEach(element => {
     this._obj[element.value] = element.value;
