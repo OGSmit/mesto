@@ -1,11 +1,12 @@
-import '.././pages/index.css';
+import '../pages/index.css';
 import {Card} from '../components/Card.js';
-import {initialCards} from '../scripts/massive.js';
-import {FormValidator} from '../scripts/FormValidator.js';
-import validationConfig from '../utils/constants.js'
-import {PopupWithImage, PopupWithForm} from '../scripts/Popup.js';
-import Section from '../scripts/Section.js';
-import UserInfo from '../scripts/UserInfo.js';
+import {initialCards} from '../utils/massive.js';
+import {FormValidator} from '../components/FormValidator.js';
+import {validationConfig} from '../utils/constants.js'
+import { PopupWithForm } from '../components/PopupWithForm';
+import { PopupWithImage } from '../components/PopupWithImage';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
 
 // Константы
 const popupEditProfile = document.querySelector('#popup_edit-profile');
@@ -20,6 +21,7 @@ const popupEditProfileWithValidation = new FormValidator(validationConfig, popup
 const popupAddCardWithValidation = new FormValidator(validationConfig, popupAddCard);
 const popupProfile = new PopupWithForm('#popup_edit-profile', handleSubmitProfilePopupForm);
 const popupCard = new PopupWithForm('#popup_add-card', handleSubmitAddCardPopupForm);
+const popupWithImage = new PopupWithImage('#popup_image');
 const section = new Section({
   items: initialCards,
   renderer: (item) => {
@@ -28,8 +30,7 @@ const section = new Section({
 const userInfo = new UserInfo({name: '.profiles__name', hobby: '.profiles__subtitle'});
 
 function openPopupWithImage(name, link) {
-  const popupWithImage = new PopupWithImage('#popup_image', name, link)
-  popupWithImage.open();
+  popupWithImage.open(name, link);
 }
 
 function createCard(item) {
@@ -39,8 +40,7 @@ function createCard(item) {
 
 function handleSubmitProfilePopupForm(objectFromInputs) {
   // Не нашел способа передать данные инпутов по другому
-  const userInfo = new UserInfo({name: '.profiles__name', hobby: '.profiles__subtitle'}, objectFromInputs);
-  userInfo.setUserInfo();
+  userInfo.setUserInfo(objectFromInputs);
 }
 
 function handleSubmitAddCardPopupForm(objectFromInputs) {
