@@ -69,7 +69,7 @@
                  id="link"
                  class="popup__inputs popup__inputs_type_hobby" 
                  placeholder="Ссылка на картинку" 
-                 name="hobby"
+                 name="link"
                  required>
           <span class="link-error popup__input-error"></span>
           <button class="popup__buttons-save " type="submit">Создать</button>
@@ -79,13 +79,13 @@
     <div class="popup popup_dark" id="popup_image">
       <div class="popup__container popup__container_target">
         <button class="popup__buttons-close" type="button"></button>
-        <img src="./images/pik-adama.png" alt="фотография города Карачаевск" class="popup__image">
+        <img src="<%=require('./images/pik-adama.png')%>" alt="фотография города Карачаевск" class="popup__image">
         <h2 class="popup__subtitle">гора Эльбрус</h2>
       </div>
     </div>
     <template id="template">
       <div class="place-card">
-        <img src="./images/karachaevsk.png" alt="фотография города Карачаевск" class="place-card__image">
+        <img src="<%=require('./images/karachaevsk.png')%>" alt="фотография города Карачаевск" class="place-card__image">
         <button class="place-card__buttons-delete" type="button"></button>
         <div class="place-card__container">
           <h2 class="place-card__subtitle">Карачаевск</h2>
@@ -97,9 +97,5 @@
   <footer class="footer">
     <p class="footer__subtitle">© 2022 Mesto Russia</p>
   </footer>
-  <script type="module" src="./pages/index.js"></script>
-  <script type="module" src="./scripts/massive.js" ></script>
-  <script type="module" src="./scripts/Card.js"></script>
-  <script type="module" src="./scripts/FormValidator.js"></script>
 </body>
 </html>

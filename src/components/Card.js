@@ -6,7 +6,6 @@ export class Card {
     this._alt = `Изображение ${name}`;
     this._element = this._getTemplate();
     this._handleCardClick = handleCardClick;
-    this._cardElement = this._generateCard();
   }
   
   _getTemplate() {
@@ -44,7 +43,7 @@ export class Card {
   }
 
   _removeCard(evt) {
-    // evt.target.closest('.place-card').remove();
-    this._element = null;
+    evt.target.closest('.place-card').remove();
+    // this._element = null;
   }
 }

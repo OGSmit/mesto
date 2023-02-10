@@ -1,8 +1,7 @@
-import '../pages/index.css';
+import './index.css';
 import {Card} from '../components/Card.js';
-import {initialCards} from '../utils/massive.js';
 import {FormValidator} from '../components/FormValidator.js';
-import {validationConfig} from '../utils/constants.js'
+import {validationConfig, initialCards} from '../utils/constants.js'
 import { PopupWithForm } from '../components/PopupWithForm';
 import { PopupWithImage } from '../components/PopupWithImage';
 import Section from '../components/Section.js';
@@ -29,17 +28,18 @@ const section = new Section({
   }},'.profile-content');
 const userInfo = new UserInfo({name: '.profiles__name', hobby: '.profiles__subtitle'});
 
+
 function openPopupWithImage(name, link) {
   popupWithImage.open(name, link);
 }
 
 function createCard(item) {
+  // console.log(item);
   const card = new Card(item.name, item.link, '#template', openPopupWithImage);
-  return card.cardElement
+  return card._generateCard();
 }
 
 function handleSubmitProfilePopupForm(objectFromInputs) {
-  // Не нашел способа передать данные инпутов по другому
   userInfo.setUserInfo(objectFromInputs);
 }
 
@@ -70,3 +70,4 @@ popupAddCardWithValidation.enableValidation();
 section.rendererAll();
 popupCard.setEventListeners();
 popupProfile.setEventListeners();
+popupWithImage.setEventListeners();
