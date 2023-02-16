@@ -34,7 +34,6 @@ function openPopupWithImage(name, link) {
 }
 
 function createCard(item) {
-  // console.log(item);
   const card = new Card(item.name, item.link, '#template', openPopupWithImage);
   return card._generateCard();
 }

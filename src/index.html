@@ -13,7 +13,10 @@
   <main class="main">
     <section class="profiles">
       <div class="profiles__column">
-        <img alt="Аватар профиля" src="<%=require('./images/profile__avatar.png')%>" class="profiles__avatar">
+          <div class="profiles__container">
+            <img alt="Аватар профиля" src="<%=require('./images/profile__avatar.png')%>" class="profiles__avatar">
+            <button class="profiles__avatar_hover" type="button"></button>
+          </div>
           <div class="profiles__row">
             <h1 class="profiles__name">Жак-Ив Кусто</h1>
             <button class="profiles__buttons-edit" type="button"></button>
@@ -82,6 +85,29 @@
         <img src="<%=require('./images/pik-adama.png')%>" alt="фотография города Карачаевск" class="popup__image">
         <h2 class="popup__subtitle">гора Эльбрус</h2>
       </div>
+    </div>
+    <div class="popup" id="popup_confirm">
+      <div class="popup__container popup__container_form popup__container_target">
+        <button class="popup__buttons-close" type="button"></button>
+        <h3 class="popup__title" style="margin-bottom: 22px;">Вы уверены?</h3>
+        <button class="popup__buttons-save " type="submit">Да</button>
+      </div>
+    </div>
+    <div class="popup" id="popup_edit-avatar">
+      <div class="popup__container popup__container_form popup__container_target">
+        <button class="popup__buttons-close" type="button"></button>
+        <h3 class="popup__title" style="margin-bottom: 45px;">Обновить аватар</h3>
+        <form class="popup__form" name="form" novalidate>
+          <input type="url"
+                 id="link"
+                 class="popup__inputs popup__inputs_type_hobby" 
+                 placeholder="Ссылка на картинку" 
+                 name="link"
+                 required>
+          <span class="link-error popup__input-error"></span>
+          <button class="popup__buttons-save" style="margin-top: 16px;" type="submit">Сохранить</button>
+        </form>
+      </div> 
     </div>
     <template id="template">
       <div class="place-card">

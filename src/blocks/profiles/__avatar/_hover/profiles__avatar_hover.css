@@ -1,0 +1,21 @@
+.profiles__avatar_hover {
+  display: block;
+  position: absolute;
+  /* visibility: visible; */
+  opacity: 0;
+  transition: opacity .5s linear; /*visibility .5s linear*/
+  background-image: url(../../../../images/pencil.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0,0,0, .8);
+  border-radius: 50%;
+  width: 119.5px;
+  height: 119.5px;
+  margin: 0 auto;
+}
+
+.profiles__avatar_hover:hover {
+  cursor: pointer;
+  /* visibility: hidden; */
+  opacity: 1;
+}
