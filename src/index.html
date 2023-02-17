@@ -44,7 +44,7 @@
           <input id="hobby"
                  type="text"
                  class="popup__inputs popup__inputs_type_hobby"
-                 name="hobby"
+                 name="about"
                  placeholder="Вид деятельности"
                  minlength="2"
                  maxlength="200"
@@ -88,9 +88,11 @@
     </div>
     <div class="popup" id="popup_confirm">
       <div class="popup__container popup__container_form popup__container_target">
-        <button class="popup__buttons-close" type="button"></button>
-        <h3 class="popup__title" style="margin-bottom: 22px;">Вы уверены?</h3>
-        <button class="popup__buttons-save " type="submit">Да</button>
+        <form class="popup__form" name="form" novalidate>
+          <button class="popup__buttons-close" type="button"></button>
+          <h3 class="popup__title" style="margin-bottom: 22px;">Вы уверены?</h3>
+          <button class="popup__buttons-save " type="submit">Да</button>
+        </form>
       </div>
     </div>
     <div class="popup" id="popup_edit-avatar">

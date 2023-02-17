@@ -25,6 +25,14 @@ export class PopupWithForm extends Popup {
     });
   }
 
+  // confirmDeletion(deleteFunction) {
+  //   this._deleteFunction = deleteFunction;
+  //   this._form.addEventListener('submit', (evt) => {
+  //     console.log(ok);
+  //     this._deleteFunction(evt)
+  //    })
+  // }
+
   open() {
     super.open()
   }

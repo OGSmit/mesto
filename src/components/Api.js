@@ -5,28 +5,67 @@ export class Api {
   }
 
   getInitialCard() {
-    return fetch(this.url, {
+    return fetch(`${this.url}/cards`, {
       headers: this.headers
     })
   }
 
-  _removeCard() {
-
+  getProfile() {
+    return fetch(`${this.url}/users/me`, {
+      headers: this.headers
+    })
   }
 
-  _addCard() {
-
+  _removeCard(cardId) {
+    return fetch(`${this.url}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: this.headers
+    })
   }
 
-  _editAvatar() {
-
+  _addCard(objectFromInputs) {
+    return fetch(`${this.url}/cards`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: objectFromInputs.name,
+        link: objectFromInputs.link
+      })
+    })
   }
 
-  _editProfile() {
-
+  _editAvatar(objectFromInputs) {
+    return fetch(`${this.url}/users/me`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: objectFromInputs.avatar
+      })
+    })
   }
 
-  _likeCard() {
+  _editProfile(objectFromInputs) {
+    return fetch(`${this.url}/users/me`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: objectFromInputs.name,
+        about: objectFromInputs.about
+      })
+    })
+  }
 
+  _addlikeCard() {
+    return fetch(`${this.url}/cards/${cardId}/likes`, {
+      method: 'PUT',
+      headers: this.headers
+    })
+  }
+
+  _removelikeCard() {
+    return fetch(`${this.url}/cards/${cardId}/likes`, {
+      method: 'DELETE',
+      headers: this.headers
+    })
   }
 }
