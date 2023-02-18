@@ -25,13 +25,13 @@ export class PopupWithForm extends Popup {
     });
   }
 
-  // confirmDeletion(deleteFunction) {
-  //   this._deleteFunction = deleteFunction;
-  //   this._form.addEventListener('submit', (evt) => {
-  //     console.log(ok);
-  //     this._deleteFunction(evt)
-  //    })
-  // }
+  _loadingState() {
+    this._form.querySelector('.popup__buttons-save').textContent = 'Сохранение...';
+  }
+
+  _normalState() {
+    this._form.querySelector('.popup__buttons-save').textContent = 'Сохранить';
+  }
 
   open() {
     super.open()

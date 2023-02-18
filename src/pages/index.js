@@ -17,7 +17,7 @@ const inputHobbyPopupEditProfile = popupEditProfile.querySelector('.popup__input
 const buttonEdit = document.querySelector('.profiles__buttons-edit');
 const buttonAdd = document.querySelector('.profiles__buttons-add');
 const buttonEditAvatar = document.querySelector('.profiles__avatar_hover');
-const avatarImage = document.querySelector('.profiles__avatar');
+// const avatarImage = document.querySelector('.profiles__avatar');
 const popupEditAvatarClear = document.querySelector('#popup_edit-avatar');
 const configForApi = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-60',
@@ -43,10 +43,25 @@ const popupEditAvatar = new PopupWithForm('#popup_edit-avatar', handleSubmitEdit
 const popupConfirm = new PopupWithForm('#popup_confirm');
 const api = new Api(configForApi);
 
+const like = (cardId) => {
+  api._addlikeCard(cardId).then(res => console.log(res)).catch(err => console.log(err));
+} 
+
+const dislike = (cardId) => {
+  api._removelikeCard(cardId).then(res => console.log(res)).catch(err => console.log(err));
+}
 
 function createCard(item) {
-  // console.log(item)
-  const card = new Card(item.name, item.link, item._id, item.owner._id, '#template', openPopupWithImage, handleCardDelete);
+  // console.log(item.likes)
+  const card = new Card(item.name,
+                        item.link,
+                        item._id,
+                        item.owner._id,
+                        item.likes.length,
+                        '#template',
+                        openPopupWithImage,
+                        handleCardDelete,
+                        like);
   return card._generateCard();
 }
 // my ownerId 63efc45d01e8d509aaf91a2d
@@ -64,8 +79,10 @@ function handleSubmitAddCardPopupForm(objectFromInputs) {
   // section.addItem(createCard(objectFromInputs));
 }
 
-function handleSubmitEditAvatar(objectFromInputs) {
-  avatarImage.src = objectFromInputs.link
+function handleSubmitEditAvatar() {
+  const objectFromInputs = popupEditAvatar._getInputValues();
+  console.log(objectFromInputs);
+  api._editAvatar(objectFromInputs);
 }
 
 function handleCardDelete(evt) {
@@ -100,6 +117,7 @@ buttonAdd.addEventListener('click', () => {
 // редактировать аватар
 buttonEditAvatar.addEventListener('click', () => {
   popupEditAvatar.open();
+
 })
 
 // Работа
@@ -132,6 +150,9 @@ api.getProfile().then((res) => {
     return console.log('api.getProfile catch some Error')
   }
 }).then((data) => {
+  console.log(data)
   userInfo.setUserInfo(data)
   userInfo.setUserAvatar(data);
 }).catch(err => console.log(err))
+
+// popupProfile._loadingState();

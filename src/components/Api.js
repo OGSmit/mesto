@@ -35,7 +35,7 @@ export class Api {
   }
 
   _editAvatar(objectFromInputs) {
-    return fetch(`${this.url}/users/me`, {
+    return fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
@@ -55,14 +55,14 @@ export class Api {
     })
   }
 
-  _addlikeCard() {
+  _addlikeCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: this.headers
     })
   }
 
-  _removelikeCard() {
+  _removelikeCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: this.headers
