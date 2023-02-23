@@ -22,4 +22,10 @@ export default class UserInfo {
     this._data = data;
     this._avatarImage.src = this._data.avatar;
   }
+
+  _getUserId() {
+    // this._data = data;
+    this._userId = this._data._id;
+    return this._userId
+  }
 }

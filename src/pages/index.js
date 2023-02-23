@@ -17,7 +17,6 @@ const inputHobbyPopupEditProfile = popupEditProfile.querySelector('.popup__input
 const buttonEdit = document.querySelector('.profiles__buttons-edit');
 const buttonAdd = document.querySelector('.profiles__buttons-add');
 const buttonEditAvatar = document.querySelector('.profiles__avatar_hover');
-// const avatarImage = document.querySelector('.profiles__avatar');
 const popupEditAvatarClear = document.querySelector('#popup_edit-avatar');
 const configForApi = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-60',
@@ -43,54 +42,47 @@ const popupEditAvatar = new PopupWithForm('#popup_edit-avatar', handleSubmitEdit
 const popupConfirm = new PopupWithForm('#popup_confirm');
 const api = new Api(configForApi);
 
-const like = (cardId) => {
-  api._addlikeCard(cardId).then(res => console.log(res)).catch(err => console.log(err));
-} 
-
-const dislike = (cardId) => {
-  api._removelikeCard(cardId).then(res => console.log(res)).catch(err => console.log(err));
+const like = (cardId, isLiked) => {
+  if (isLiked) {
+    api._removelikeCard(cardId).then(res => console.log(res)).catch(err => console.log(err));
+  } else api._addlikeCard(cardId).then(res => console.log(res)).catch(err => console.log(err));
 }
 
+
 function createCard(item) {
-  // console.log(item.likes)
-  const card = new Card(item.name,
-                        item.link,
-                        item._id,
-                        item.owner._id,
-                        item.likes.length,
+  const card = new Card(item,
                         '#template',
                         openPopupWithImage,
                         handleCardDelete,
-                        like);
+                        like,
+                        );
   return card._generateCard();
 }
-// my ownerId 63efc45d01e8d509aaf91a2d
+
 function openPopupWithImage(name, link) {
   popupWithImage.open(name, link);
 }
 
 function handleSubmitProfilePopupForm(objectFromInputs) {
-  // userInfo.setUserInfo(objectFromInputs);
-  api._editProfile(objectFromInputs).then(res => console.log(res)).catch(err => console.log(err))
+  popupProfile._loadingState();
+  api._editProfile(objectFromInputs).then((res) => {console.log(res);
+    popupProfile._normalState();
+  }).catch(err => console.log(err))
 }
 
 function handleSubmitAddCardPopupForm(objectFromInputs) {
   api._addCard(objectFromInputs).then(res => console.log(res)).catch(err => console.log(err))
-  // section.addItem(createCard(objectFromInputs));
 }
 
 function handleSubmitEditAvatar() {
   const objectFromInputs = popupEditAvatar._getInputValues();
-  console.log(objectFromInputs);
   api._editAvatar(objectFromInputs);
 }
 
 function handleCardDelete(evt) {
   popupConfirm.open();
   const cardId = evt.target.closest('.place-card');
-  // console.log(cardId.id);
   popupConfirmation.querySelector('.popup__buttons-save').addEventListener('click', (evt) => {
-    console.log(cardId);
     evt.preventDefault();
     api._removeCard(cardId.id).then(res => console.log(res)).catch(err => console.log(err));
     popupConfirm.close();
@@ -130,29 +122,41 @@ popupWithImage.setEventListeners();
 popupEditAvatar.setEventListeners();
 popupConfirm.setEventListeners();
 
-// отрисовка массива с сервера
-api.getInitialCard().then((res) => {
-  if(res.ok) {
-    return res.json();
-  } else {
-    return console.log('api.getInitialCard catch some Error')
-  }
-}).then((data) => {
-  section.rendererAll(data);
-  })
-  .catch(err => console.log(err));
+
 
 // получаем данные профиля + рендер
-api.getProfile().then((res) => {
-  if(res.ok) {
-    return res.json()
-  } else {
-    return console.log('api.getProfile catch some Error')
-  }
-}).then((data) => {
-  console.log(data)
-  userInfo.setUserInfo(data)
-  userInfo.setUserAvatar(data);
-}).catch(err => console.log(err))
+ api.getProfile().then((res) => {
+    if(res.ok) {
+      return res.json()
+    } else {
+      return console.log('api.getProfile catch some Error')
+    }
+  }).then((dataUser) => {
 
-// popupProfile._loadingState();
+      // отрисовка массива с сервера
+    api.getInitialCard().then((res) => {
+      if(res.ok) {
+        return res.json();
+      } else {
+        return console.log('api.getInitialCard catch some Error')
+      }
+      }).then((data) => {
+        data.forEach( (element) => {
+         if (element.likes.find(element => element._id === userInfo._getUserId())) {
+          element.isLiked = true;
+         } else element.isLiked = false;
+        });
+
+         data.forEach( (element) => {
+           if (element.owner._id === userInfo._getUserId() ) {
+            element.isMine = true;
+        } else element.isMine = false;
+         })
+      section.rendererAll(data);
+      })
+    .catch(err => console.log(err));
+
+    userInfo.setUserInfo(dataUser)
+    userInfo.setUserAvatar(dataUser);
+  }).catch(err => console.log(err))
+
