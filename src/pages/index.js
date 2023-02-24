@@ -44,8 +44,12 @@ const api = new Api(configForApi);
 
 const like = (cardId, isLiked) => {
   if (isLiked) {
-    api._removelikeCard(cardId).then(res => console.log(res)).catch(err => console.log(err));
-  } else api._addlikeCard(cardId).then(res => console.log(res)).catch(err => console.log(err));
+    api._removelikeCard(cardId).then(() => {
+      location.reload();
+    }).catch(err => console.log(err));
+  } else api._addlikeCard(cardId).then(() => {
+    location.reload();
+  }).catch(err => console.log(err));
 }
 
 
@@ -65,18 +69,35 @@ function openPopupWithImage(name, link) {
 
 function handleSubmitProfilePopupForm(objectFromInputs) {
   popupProfile._loadingState();
-  api._editProfile(objectFromInputs).then((res) => {console.log(res);
+  api._editProfile(objectFromInputs).then((res) => {
+    console.log(res);
+    popupProfile.close();
     popupProfile._normalState();
-  }).catch(err => console.log(err))
+    location.reload()
+  }).catch(err => console.log(err));
 }
 
 function handleSubmitAddCardPopupForm(objectFromInputs) {
-  api._addCard(objectFromInputs).then(res => console.log(res)).catch(err => console.log(err))
+  popupCard._loadingState();
+  api._addCard(objectFromInputs).then((res) => {
+    console.log(res);
+    popupCard.close();
+    popupCard._normalState();
+    location.reload()
+  }).catch(err => console.log(err))
 }
 
 function handleSubmitEditAvatar() {
+  popupEditAvatar._loadingState();
   const objectFromInputs = popupEditAvatar._getInputValues();
-  api._editAvatar(objectFromInputs);
+  api._editAvatar(objectFromInputs).then((res) => {
+    console.log(res);
+    popupEditAvatar.close();
+    popupEditAvatar._normalState();
+    location.reload()
+  }).catch((err) => {
+    console.log(err);
+  });
 }
 
 function handleCardDelete(evt) {
@@ -84,8 +105,11 @@ function handleCardDelete(evt) {
   const cardId = evt.target.closest('.place-card');
   popupConfirmation.querySelector('.popup__buttons-save').addEventListener('click', (evt) => {
     evt.preventDefault();
-    api._removeCard(cardId.id).then(res => console.log(res)).catch(err => console.log(err));
-    popupConfirm.close();
+    api._removeCard(cardId.id).then((res) => {
+      console.log(res);
+      location.reload();
+      popupConfirm.close();
+    }).catch(err => console.log(err));
   })
 }
 
