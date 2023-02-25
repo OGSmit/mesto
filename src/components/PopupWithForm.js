@@ -7,7 +7,7 @@ export class PopupWithForm extends Popup {
     this._inputList = this._popupBySelector.querySelectorAll('.popup__inputs');
   }
 
-  _getInputValues() {
+  getInputValues() {
     this._obj = {};
     this._inputList.forEach(element => {
       this._obj[element.name] = element.value;
@@ -19,16 +19,16 @@ export class PopupWithForm extends Popup {
     super.setEventListener();
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._objectFromInputs = this._getInputValues();
+      this._objectFromInputs = this.getInputValues();
       this._callBackSubmit(this._objectFromInputs);
     });
   }
 
-  _loadingState() {
+  loadingState() {
     this._form.querySelector('.popup__buttons-save').textContent = 'Сохранение...';
   }
 
-  _normalState() {
+  normalState() {
     this._form.querySelector('.popup__buttons-save').textContent = 'Сохранить';
   }
 

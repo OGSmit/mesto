@@ -7,23 +7,23 @@ export class Api {
   getInitialCard() {
     return fetch(`${this.url}/cards`, {
       headers: this.headers
-    })
+    }).then(this._checkResponse).catch(err => console.log(err))
   }
 
   getProfile() {
     return fetch(`${this.url}/users/me`, {
       headers: this.headers
-    })
+    }).then(this._checkResponse).catch(err => console.log(err))
   }
 
-  _removeCard(cardId) {
+  removeCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this.headers
-    })
+    }).then(this._checkResponse).catch(err => console.log(err))
   }
 
-  _addCard(objectFromInputs) {
+  addCard(objectFromInputs) {
     return fetch(`${this.url}/cards`, {
       method: 'POST',
       headers: this.headers,
@@ -31,20 +31,20 @@ export class Api {
         name: objectFromInputs.name,
         link: objectFromInputs.link
       })
-    })
+    }).then(this._checkResponse).catch(err => console.log(err))
   }
 
-  _editAvatar(objectFromInputs) {
+  editAvatar(objectFromInputs) {
     return fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
         avatar: objectFromInputs.avatar
       })
-    })
-  }
+    }).then(this._checkResponse).catch(err => console.log(err))
+  };
 
-  _editProfile(objectFromInputs) {
+  editProfile(objectFromInputs) {
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
@@ -52,20 +52,37 @@ export class Api {
         name: objectFromInputs.name,
         about: objectFromInputs.about
       })
-    })
+    }).then(this._checkResponse).catch(err => console.log(err))
   }
 
-  _addlikeCard(cardId) {
+  addlikeCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: this.headers
-    })
+    }).then(this._checkResponse).catch(err => console.log(err))
   }
 
-  _removelikeCard(cardId) {
+  removelikeCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: this.headers
-    })
+    }).then(this._checkResponse).catch(err => console.log(err))
   }
+
+  _checkResponse(res) {
+    if(res.ok) {
+      return res.json();
+    } else {
+      return console.log('api.getInitialCard catch some Error')
+    }
+  }
+
+
+  // Не получилось сделать метод
+  
+  // _request(url) {
+  //   return fetch(`${url}/cards`, {
+  //     headers: this.headers
+  //   }).then(this._checkResponse).catch(err => console.log(err))
+  // }
 }

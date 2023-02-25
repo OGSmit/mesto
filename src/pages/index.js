@@ -16,7 +16,7 @@ const inputNamePopupEditProfile = popupEditProfile.querySelector('.popup__inputs
 const inputHobbyPopupEditProfile = popupEditProfile.querySelector('.popup__inputs_type_hobby');
 const buttonEdit = document.querySelector('.profiles__buttons-edit');
 const buttonAdd = document.querySelector('.profiles__buttons-add');
-const buttonEditAvatar = document.querySelector('.profiles__avatar_hover');
+const buttonEditAvatar = document.querySelector('.profiles__buttons-avatar');
 const popupEditAvatarClear = document.querySelector('#popup_edit-avatar');
 const configForApi = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-60',
@@ -44,10 +44,10 @@ const api = new Api(configForApi);
 
 const like = (cardId, isLiked) => {
   if (isLiked) {
-    api._removelikeCard(cardId).then(() => {
+    api.removelikeCard(cardId).then(() => {
       location.reload();
     }).catch(err => console.log(err));
-  } else api._addlikeCard(cardId).then(() => {
+  } else api.addlikeCard(cardId).then(() => {
     location.reload();
   }).catch(err => console.log(err));
 }
@@ -60,7 +60,7 @@ function createCard(item) {
                         handleCardDelete,
                         like,
                         );
-  return card._generateCard();
+  return card.generateCard();
 }
 
 function openPopupWithImage(name, link) {
@@ -69,32 +69,32 @@ function openPopupWithImage(name, link) {
 
 // Коллбеки для попапов
 function handleSubmitProfilePopupForm(objectFromInputs) {
-  popupProfile._loadingState();
-  api._editProfile(objectFromInputs).then((res) => {
+  popupProfile.loadingState();
+  api.editProfile(objectFromInputs).then((res) => {
     console.log(res);
     popupProfile.close();
-    popupProfile._normalState();
+    popupProfile.normalState();
     location.reload()
   }).catch(err => console.log(err));
 }
 
 function handleSubmitAddCardPopupForm(objectFromInputs) {
-  popupCard._loadingState();
-  api._addCard(objectFromInputs).then((res) => {
+  popupCard.loadingState();
+  api.addCard(objectFromInputs).then((res) => {
     console.log(res);
     popupCard.close();
-    popupCard._normalState();
+    popupCard.normalState();
     location.reload()
   }).catch(err => console.log(err))
 }
 
 function handleSubmitEditAvatar() {
-  popupEditAvatar._loadingState();
-  const objectFromInputs = popupEditAvatar._getInputValues();
-  api._editAvatar(objectFromInputs).then((res) => {
+  popupEditAvatar.loadingState();
+  const objectFromInputs = popupEditAvatar.getInputValues();
+  api.editAvatar(objectFromInputs).then((res) => {
     console.log(res);
     popupEditAvatar.close();
-    popupEditAvatar._normalState();
+    popupEditAvatar.normalState();
     location.reload()
   }).catch((err) => {
     console.log(err);
@@ -106,7 +106,7 @@ function handleCardDelete(evt) {
   const cardId = evt.target.closest('.place-card');
   popupConfirmation.querySelector('.popup__buttons-save').addEventListener('click', (evt) => {
     evt.preventDefault();
-    api._removeCard(cardId.id).then((res) => {
+    api.removeCard(cardId.id).then((res) => {
       console.log(res);
       location.reload();
       popupConfirm.close();
@@ -134,13 +134,13 @@ buttonAdd.addEventListener('click', () => {
 // редактировать аватар
 buttonEditAvatar.addEventListener('click', () => {
   popupEditAvatar.open();
-
+  // popupEditAvatarWithValidation.disabledButton();
 })
 
 // Работа
 popupEditProfileWithValidation.enableValidation();
 popupAddCardWithValidation.enableValidation();
-popupEditAvatarWithValidation.enableValidation();
+// popupEditAvatarWithValidation.enableValidation(); // не понимаю где ошибка , все попапы как один ...
 popupCard.setEventListeners();
 popupProfile.setEventListeners();
 popupWithImage.setEventListeners();
@@ -150,30 +150,17 @@ popupConfirm.setEventListeners();
 
 
 // получаем данные профиля + рендер
- api.getProfile().then((res) => {
-    if(res.ok) {
-      return res.json()
-    } else {
-      return console.log('api.getProfile catch some Error')
-    }
-  }).then((dataUser) => {
-
+ api.getProfile().then((dataUser) => {
       // отрисовка массива с сервера
-    api.getInitialCard().then((res) => {
-      if(res.ok) {
-        return res.json();
-      } else {
-        return console.log('api.getInitialCard catch some Error')
-      }
-      }).then((data) => {
+    api.getInitialCard().then((data) => {
         data.forEach( (element) => {
-         if (element.likes.find(element => element._id === userInfo._getUserId())) {
+         if (element.likes.find(element => element._id === userInfo.getUserId())) {
           element.isLiked = true;
          } else element.isLiked = false;
         });
 
          data.forEach( (element) => {
-           if (element.owner._id === userInfo._getUserId() ) {
+           if (element.owner._id === userInfo.getUserId() ) {
             element.isMine = true;
         } else element.isMine = false;
          })

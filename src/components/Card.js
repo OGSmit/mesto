@@ -28,7 +28,7 @@ export class Card {
     this._handlerLike(cardId, isLiked);
   }
 
-  _generateCard() {
+  generateCard() {
     this._cardImage = this._element.querySelector('.place-card__image');
     this._element.querySelector('.place-card__subtitle').textContent = this._name;
     this._cardImage.src = this._link;
@@ -39,13 +39,13 @@ export class Card {
     if (this._isLiked) {
       this._element.querySelector('.place-card__buttons-like').classList.add('place-card__buttons-like_active')
     } else this._element.querySelector('.place-card__buttons-like').classList.remove('place-card__buttons-like_active');
-
+    // проверка длины массива лайков
     if (this.likesArray.length === 0) {
       this._element.querySelector('.place-card__like-counter').style = 'visibility: hidden;';
     } else {
       this._element.querySelector('.place-card__like-counter').textContent = this.likesArray.length;
     };
-
+     // проверка моя ли карточка
     if (!this._isMine) {
       this._buttonImage = this._element.querySelector('.place-card__buttons-delete');
       this._buttonImage.style = 'visibility: hidden;';
