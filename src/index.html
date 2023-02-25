@@ -14,8 +14,8 @@
     <section class="profiles">
       <div class="profiles__column">
           <div class="profiles__container">
-            <img alt="Аватар профиля" src="" class="profiles__avatar">
-            <!-- <%=require('./images/profile__avatar.png')%> -->
+            <img alt="Аватар профиля" src="<%=require('./images/profile__avatar.png')%>" class="profiles__avatar">
+
             <button class="profiles__avatar_hover" type="button"></button>
           </div>
           <div class="profiles__row">
@@ -102,7 +102,7 @@
         <h3 class="popup__title" style="margin-bottom: 45px;">Обновить аватар</h3>
         <form class="popup__form" name="form" novalidate>
           <input type="url"
-                 id="link"
+                 id="avatar-link"
                  class="popup__inputs popup__inputs_type_hobby" 
                  placeholder="Ссылка на картинку" 
                  name="avatar"
