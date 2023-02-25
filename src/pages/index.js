@@ -67,6 +67,7 @@ function openPopupWithImage(name, link) {
   popupWithImage.open(name, link);
 }
 
+// Коллбеки для попапов
 function handleSubmitProfilePopupForm(objectFromInputs) {
   popupProfile._loadingState();
   api._editProfile(objectFromInputs).then((res) => {

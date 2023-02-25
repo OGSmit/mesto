@@ -1,4 +1,4 @@
-.profiles__avatar_hover {
+.profiles__buttons-avatar {
   display: block;
   position: absolute;
   opacity: 0;
@@ -14,7 +14,7 @@
   margin: 0 auto;
 }
 
-.profiles__avatar_hover:hover {
+.profiles__buttons-avatar:hover {
   cursor: pointer;
   opacity: 1;
 }
