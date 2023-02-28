@@ -29,7 +29,7 @@ export class Api {
       headers: this.headers,
       body: JSON.stringify({
         name: objectFromInputs.name,
-        link: objectFromInputs.link
+        link: objectFromInputs.link 
       })
     }).then(this._checkResponse).catch(err => console.log(err))
   }
@@ -71,18 +71,10 @@ export class Api {
 
   _checkResponse(res) {
     if(res.ok) {
+      console.log(res);
       return res.json();
     } else {
       return console.log('api.getInitialCard catch some Error')
     }
   }
-
-
-  // Не получилось сделать метод
-  
-  // _request(url) {
-  //   return fetch(`${url}/cards`, {
-  //     headers: this.headers
-  //   }).then(this._checkResponse).catch(err => console.log(err))
-  // }
 }

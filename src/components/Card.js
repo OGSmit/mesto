@@ -35,6 +35,14 @@ export class Card {
     this._cardImage.alt = this._alt;
     this._element.id = this._cardId;
     this._element.owner = this._cardOwner;
+
+    // если мы создаем карточку из попапа
+    if (this.likesArray === undefined) {
+      this.likesArray = [];
+    }
+    if (this._isMine === undefined) {
+      this._isMine = true;
+    }
     // проверка лайкнул ли я эту карточку
     if (this._isLiked) {
       this._element.querySelector('.place-card__buttons-like').classList.add('place-card__buttons-like_active')
@@ -60,8 +68,8 @@ export class Card {
       this._handleCardDelete(evt);
     });
 
-    this._element.querySelector('.place-card__buttons-like').addEventListener('click', () => {
-      this._handlerLike(this._element.id, this._isLiked);
+    this._element.querySelector('.place-card__buttons-like').addEventListener('click', (evt) => {
+      this._handlerLike(this._element.id, this._isLiked, evt);
     });
 
     this._element.querySelector('.place-card__image').addEventListener('click', () => {
@@ -70,6 +78,6 @@ export class Card {
   }
 
   _removeCard(evt) {
-    evt.target.closest('.place-card').remove(evt);
+    evt.target.closest('.place-card').remove();
   }
 }

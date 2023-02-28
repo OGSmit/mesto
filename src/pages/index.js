@@ -2,6 +2,7 @@ import './index.css';
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {validationConfig} from '../utils/constants.js';
+import { Popup } from '../components/Popup';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
 import {Api} from '../components/Api.js';
@@ -25,6 +26,7 @@ const configForApi = {
     'Content-Type': 'application/json'
   }
 }
+const likeImage = document.querySelector('.place-card__buttons-like');
 
 // Экземпляры
 const popupEditProfileWithValidation = new FormValidator(validationConfig, popupEditProfile);
@@ -35,20 +37,20 @@ const popupCard = new PopupWithForm('#popup_add-card', handleSubmitAddCardPopupF
 const popupWithImage = new PopupWithImage('#popup_image');
 const section = new Section({
   renderer: (item) => {
-    section.addItem(createCard(item));
+    section.addItemAppend(createCard(item));
   }},'.profile-content');
 const userInfo = new UserInfo({name: '.profiles__name', about: '.profiles__subtitle'}, '.profiles__avatar');
 const popupEditAvatar = new PopupWithForm('#popup_edit-avatar', handleSubmitEditAvatar);
-const popupConfirm = new PopupWithForm('#popup_confirm');
+const popupConfirm = new Popup('#popup_confirm');
 const api = new Api(configForApi);
 
-const like = (cardId, isLiked) => {
+const like = (cardId, isLiked, evt) => {
   if (isLiked) {
     api.removelikeCard(cardId).then(() => {
-      location.reload();
+      evt.target.classList.toggle('place-card__buttons-like_active');
     }).catch(err => console.log(err));
   } else api.addlikeCard(cardId).then(() => {
-    location.reload();
+    evt.target.classList.toggle('place-card__buttons-like_active');
   }).catch(err => console.log(err));
 }
 
@@ -72,9 +74,9 @@ function handleSubmitProfilePopupForm(objectFromInputs) {
   popupProfile.loadingState();
   api.editProfile(objectFromInputs).then((res) => {
     console.log(res);
+    userInfo.setUserInfo(objectFromInputs);
     popupProfile.close();
     popupProfile.normalState();
-    location.reload()
   }).catch(err => console.log(err));
 }
 
@@ -84,7 +86,9 @@ function handleSubmitAddCardPopupForm(objectFromInputs) {
     console.log(res);
     popupCard.close();
     popupCard.normalState();
-    location.reload()
+    const newItem = createCard(objectFromInputs);
+   // section.addItemPrepend(newItem);
+    document.querySelector('.profile-content').prepend(newItem);
   }).catch(err => console.log(err))
 }
 
@@ -95,7 +99,7 @@ function handleSubmitEditAvatar() {
     console.log(res);
     popupEditAvatar.close();
     popupEditAvatar.normalState();
-    location.reload()
+    userInfo.setUserAvatar(objectFromInputs);
   }).catch((err) => {
     console.log(err);
   });
@@ -107,8 +111,7 @@ function handleCardDelete(evt) {
   popupConfirmation.querySelector('.popup__buttons-save').addEventListener('click', (evt) => {
     evt.preventDefault();
     api.removeCard(cardId.id).then((res) => {
-      console.log(res);
-      location.reload();
+      cardId.remove();
       popupConfirm.close();
     }).catch(err => console.log(err));
   })
@@ -134,18 +137,18 @@ buttonAdd.addEventListener('click', () => {
 // редактировать аватар
 buttonEditAvatar.addEventListener('click', () => {
   popupEditAvatar.open();
-  // popupEditAvatarWithValidation.disabledButton();
+  popupEditAvatarWithValidation.disabledButton();
 })
 
 // Работа
 popupEditProfileWithValidation.enableValidation();
 popupAddCardWithValidation.enableValidation();
-// popupEditAvatarWithValidation.enableValidation(); // не понимаю где ошибка , все попапы как один ...
+popupEditAvatarWithValidation.enableValidation();
 popupCard.setEventListeners();
 popupProfile.setEventListeners();
 popupWithImage.setEventListeners();
 popupEditAvatar.setEventListeners();
-popupConfirm.setEventListeners();
+popupConfirm.setEventListener();
 
 
 
