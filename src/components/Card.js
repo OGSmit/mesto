@@ -11,7 +11,7 @@ export class Card {
     this._cardOwner = card.owner;
     this.likesArray = card.likes;
     this._handlerLike = hadlerLike;
-    this._isLiked = card.isLiked;
+    this._element.isLiked = card.isLiked;
     this._isMine = card.isMine;
   }
   
@@ -36,40 +36,29 @@ export class Card {
     this._element.id = this._cardId;
     this._element.owner = this._cardOwner;
 
-    // если мы создаем карточку из попапа
-    if (this.likesArray === undefined) {
-      this.likesArray = [];
-    }
-    if (this._isMine === undefined) {
-      this._isMine = true;
-    }
     // проверка лайкнул ли я эту карточку
-    if (this._isLiked) {
+    if (this._element.isLiked) {
       this._element.querySelector('.place-card__buttons-like').classList.add('place-card__buttons-like_active')
     } else this._element.querySelector('.place-card__buttons-like').classList.remove('place-card__buttons-like_active');
-    // проверка длины массива лайков
-    if (this.likesArray.length === 0) {
-      this._element.querySelector('.place-card__like-counter').style = 'visibility: hidden;';
-    } else {
-      this._element.querySelector('.place-card__like-counter').textContent = this.likesArray.length;
-    };
-     // проверка моя ли карточка
+  
+    // проверка моя ли карточка
     if (!this._isMine) {
       this._buttonImage = this._element.querySelector('.place-card__buttons-delete');
       this._buttonImage.style = 'visibility: hidden;';
     };
-
+    
+    this._element.querySelector('.place-card__like-counter').textContent = this.likesArray.length;
     this._setEventListener();
     return this._element;
   }
 
   _setEventListener() {
-    this._element.querySelector('.place-card__buttons-delete').addEventListener('click', (evt) => {
-      this._handleCardDelete(evt);
+    this._element.querySelector('.place-card__buttons-delete').addEventListener('click', () => {
+      this._handleCardDelete(this._element);
     });
 
-    this._element.querySelector('.place-card__buttons-like').addEventListener('click', (evt) => {
-      this._handlerLike(this._element.id, this._isLiked, evt);
+    this._element.querySelector('.place-card__buttons-like').addEventListener('click', () => {
+      this._handlerLike(this._element);
     });
 
     this._element.querySelector('.place-card__image').addEventListener('click', () => {
@@ -79,5 +68,9 @@ export class Card {
 
   _removeCard(evt) {
     evt.target.closest('.place-card').remove();
+  }
+
+  toggleLike() {
+    this._element.querySelector('.place-card__buttons-like').classList.toggle('place-card__buttons-like_active');
   }
 }

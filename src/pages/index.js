@@ -2,7 +2,7 @@ import './index.css';
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {validationConfig} from '../utils/constants.js';
-import { Popup } from '../components/Popup';
+import { PopupConfirm  } from '../components/PopupConfirm.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
 import {Api} from '../components/Api.js';
@@ -10,7 +10,6 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 
 // Константы
-const popupConfirmation = document.querySelector('#popup_confirm')
 const popupEditProfile = document.querySelector('#popup_edit-profile');
 const popupAddCard = document.querySelector('#popup_add-card');
 const inputNamePopupEditProfile = popupEditProfile.querySelector('.popup__inputs_type_name');
@@ -41,18 +40,8 @@ const section = new Section({
   }},'.profile-content');
 const userInfo = new UserInfo({name: '.profiles__name', about: '.profiles__subtitle'}, '.profiles__avatar');
 const popupEditAvatar = new PopupWithForm('#popup_edit-avatar', handleSubmitEditAvatar);
-const popupConfirm = new Popup('#popup_confirm');
+const popupConfirm = new PopupConfirm('#popup_confirm', handlePopupConfirm);
 const api = new Api(configForApi);
-
-const like = (cardId, isLiked, evt) => {
-  if (isLiked) {
-    api.removelikeCard(cardId).then(() => {
-      evt.target.classList.toggle('place-card__buttons-like_active');
-    }).catch(err => console.log(err));
-  } else api.addlikeCard(cardId).then(() => {
-    evt.target.classList.toggle('place-card__buttons-like_active');
-  }).catch(err => console.log(err));
-}
 
 
 function createCard(item) {
@@ -69,11 +58,39 @@ function openPopupWithImage(name, link) {
   popupWithImage.open(name, link);
 }
 
+
 // Коллбеки для попапов
+function handlePopupConfirm(card) {
+  console.log(card);
+  api.removeCard(card.id).then((res) => {
+    card.remove();
+    popupConfirm.close();
+  }).catch(err => console.log(err));
+}
+
+const like = (card) => {
+ // console.log(card)
+  if (card.isLiked) {
+    api.removelikeCard(card.id).then((res) => {
+     // console.log(res);
+      card.querySelector('.place-card__buttons-like').classList.toggle('place-card__buttons-like_active');
+      card.querySelector('.place-card__like-counter').textContent = res.likes.length;
+      card.isLiked = false;
+    }).catch(err => console.log(err));
+  } else {
+    api.addlikeCard(card.id).then((res) => {
+    //  console.log(res);
+      card.querySelector('.place-card__buttons-like').classList.toggle('place-card__buttons-like_active');
+      card.querySelector('.place-card__like-counter').textContent = res.likes.length;
+      card.isLiked = true;
+    }).catch(err => console.log(err));
+  }
+}
+
 function handleSubmitProfilePopupForm(objectFromInputs) {
   popupProfile.loadingState();
   api.editProfile(objectFromInputs).then((res) => {
-    console.log(res);
+    //console.log(res);
     userInfo.setUserInfo(objectFromInputs);
     popupProfile.close();
     popupProfile.normalState();
@@ -83,12 +100,14 @@ function handleSubmitProfilePopupForm(objectFromInputs) {
 function handleSubmitAddCardPopupForm(objectFromInputs) {
   popupCard.loadingState();
   api.addCard(objectFromInputs).then((res) => {
-    console.log(res);
+    //console.log(res);
     popupCard.close();
-    popupCard.normalState();
-    const newItem = createCard(objectFromInputs);
-   // section.addItemPrepend(newItem);
+    const addDefaultProperties = objectFromInputs;
+    addDefaultProperties.likes = res.likes;
+    addDefaultProperties.isMine = true;
+    const newItem = createCard(addDefaultProperties );
     document.querySelector('.profile-content').prepend(newItem);
+    popupCard.normalState();
   }).catch(err => console.log(err))
 }
 
@@ -105,16 +124,10 @@ function handleSubmitEditAvatar() {
   });
 }
 
-function handleCardDelete(evt) {
+function handleCardDelete(card) {
   popupConfirm.open();
-  const cardId = evt.target.closest('.place-card');
-  popupConfirmation.querySelector('.popup__buttons-save').addEventListener('click', (evt) => {
-    evt.preventDefault();
-    api.removeCard(cardId.id).then((res) => {
-      cardId.remove();
-      popupConfirm.close();
-    }).catch(err => console.log(err));
-  })
+  popupConfirm.setCardForDelete(card);
+  popupConfirm.setEventListener();
 }
 
 // // СЛУШАТЕЛИ:
@@ -148,7 +161,7 @@ popupCard.setEventListeners();
 popupProfile.setEventListeners();
 popupWithImage.setEventListeners();
 popupEditAvatar.setEventListeners();
-popupConfirm.setEventListener();
+
 
 
 
