@@ -100,13 +100,14 @@ function handleSubmitProfilePopupForm(objectFromInputs) {
 function handleSubmitAddCardPopupForm(objectFromInputs) {
   popupCard.loadingState();
   api.addCard(objectFromInputs).then((res) => {
-    //console.log(res);
+    console.log(res);
     popupCard.close();
-    const addDefaultProperties = objectFromInputs;
-    addDefaultProperties.likes = res.likes;
-    addDefaultProperties.isMine = true;
-    const newItem = createCard(addDefaultProperties );
-    document.querySelector('.profile-content').prepend(newItem);
+    // моя ли карточка
+    if (res.owner._id === userInfo.getUserId() ) {
+      res.isMine = true;
+    } else res.isMine = false;
+
+    document.querySelector('.profile-content').prepend(createCard(res));
     popupCard.normalState();
   }).catch(err => console.log(err))
 }
@@ -126,8 +127,7 @@ function handleSubmitEditAvatar() {
 
 function handleCardDelete(card) {
   popupConfirm.open();
-  popupConfirm.setCardForDelete(card);
-  popupConfirm.setEventListener();
+  popupConfirm.setEventListener(card);
 }
 
 // // СЛУШАТЕЛИ:

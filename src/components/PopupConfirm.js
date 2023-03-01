@@ -19,8 +19,7 @@ export class PopupConfirm extends Popup {
     super.setEventListeners();
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      console.log(this._card);
-      this._callBackSubmit(this._card);
+      this._callBackSubmit(card);
     });
   }
 

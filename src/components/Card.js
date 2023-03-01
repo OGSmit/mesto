@@ -35,7 +35,7 @@ export class Card {
     this._cardImage.alt = this._alt;
     this._element.id = this._cardId;
     this._element.owner = this._cardOwner;
-
+   
     // проверка лайкнул ли я эту карточку
     if (this._element.isLiked) {
       this._element.querySelector('.place-card__buttons-like').classList.add('place-card__buttons-like_active')
