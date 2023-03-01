@@ -74,7 +74,7 @@ export class Api {
       //console.log(res);
       return res.json();
     } else {
-      return console.log('api.getInitialCard catch some Error')
+      return console.log(res)
     }
   }
 }

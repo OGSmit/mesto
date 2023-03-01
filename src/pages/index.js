@@ -40,10 +40,10 @@ const section = new Section({
   }},'.profile-content');
 const userInfo = new UserInfo({name: '.profiles__name', about: '.profiles__subtitle'}, '.profiles__avatar');
 const popupEditAvatar = new PopupWithForm('#popup_edit-avatar', handleSubmitEditAvatar);
-const popupConfirm = new PopupConfirm('#popup_confirm', handlePopupConfirm);
+const popupConfirm = new PopupConfirm('#popup_confirm');
 const api = new Api(configForApi);
 
-
+// Колбэки 
 function createCard(item) {
   const card = new Card(item,
                         '#template',
@@ -58,30 +58,19 @@ function openPopupWithImage(name, link) {
   popupWithImage.open(name, link);
 }
 
-
-// Коллбеки для попапов
-function handlePopupConfirm(card) {
-  console.log(card);
-  api.removeCard(card.id).then((res) => {
-    card.remove();
-    popupConfirm.close();
-  }).catch(err => console.log(err));
-}
-
 const like = (card) => {
- // console.log(card)
+ const cardButtonLike = card.querySelector('.place-card__buttons-like');
+ const cardLikeCounter = card.querySelector('.place-card__like-counter');
   if (card.isLiked) {
     api.removelikeCard(card.id).then((res) => {
-     // console.log(res);
-      card.querySelector('.place-card__buttons-like').classList.toggle('place-card__buttons-like_active');
-      card.querySelector('.place-card__like-counter').textContent = res.likes.length;
+     cardButtonLike.classList.toggle('place-card__buttons-like_active');
+     cardLikeCounter.textContent = res.likes.length;
       card.isLiked = false;
     }).catch(err => console.log(err));
   } else {
     api.addlikeCard(card.id).then((res) => {
-    //  console.log(res);
-      card.querySelector('.place-card__buttons-like').classList.toggle('place-card__buttons-like_active');
-      card.querySelector('.place-card__like-counter').textContent = res.likes.length;
+    cardButtonLike.classList.toggle('place-card__buttons-like_active');
+    cardLikeCounter.textContent = res.likes.length;
       card.isLiked = true;
     }).catch(err => console.log(err));
   }
@@ -90,8 +79,7 @@ const like = (card) => {
 function handleSubmitProfilePopupForm(objectFromInputs) {
   popupProfile.loadingState();
   api.editProfile(objectFromInputs).then((res) => {
-    //console.log(res);
-    userInfo.setUserInfo(objectFromInputs);
+    userInfo.setUserInfo(res);
     popupProfile.close();
     popupProfile.normalState();
   }).catch(err => console.log(err));
@@ -100,7 +88,6 @@ function handleSubmitProfilePopupForm(objectFromInputs) {
 function handleSubmitAddCardPopupForm(objectFromInputs) {
   popupCard.loadingState();
   api.addCard(objectFromInputs).then((res) => {
-    console.log(res);
     popupCard.close();
     // моя ли карточка
     if (res.owner._id === userInfo.getUserId() ) {
@@ -116,10 +103,9 @@ function handleSubmitEditAvatar() {
   popupEditAvatar.loadingState();
   const objectFromInputs = popupEditAvatar.getInputValues();
   api.editAvatar(objectFromInputs).then((res) => {
-    console.log(res);
     popupEditAvatar.close();
     popupEditAvatar.normalState();
-    userInfo.setUserAvatar(objectFromInputs);
+    userInfo.setUserAvatar(res);
   }).catch((err) => {
     console.log(err);
   });
@@ -127,7 +113,13 @@ function handleSubmitEditAvatar() {
 
 function handleCardDelete(card) {
   popupConfirm.open();
-  popupConfirm.setEventListener(card);
+  popupConfirm.handleFormSubmit( function() {
+    popupConfirm.loadingState();
+    api.removeCard(card._cardId).then(() => {
+      card._element.remove();
+      popupConfirm.normalState();
+    }).then(() => popupConfirm.close(card)).catch(err => console.log(err));
+  })
 }
 
 // // СЛУШАТЕЛИ:
@@ -161,6 +153,7 @@ popupCard.setEventListeners();
 popupProfile.setEventListeners();
 popupWithImage.setEventListeners();
 popupEditAvatar.setEventListeners();
+popupConfirm.setEventListeners();
 
 
 
@@ -174,7 +167,6 @@ popupEditAvatar.setEventListeners();
           element.isLiked = true;
          } else element.isLiked = false;
         });
-
          data.forEach( (element) => {
            if (element.owner._id === userInfo.getUserId() ) {
             element.isMine = true;
@@ -183,7 +175,6 @@ popupEditAvatar.setEventListeners();
       section.rendererAll(data);
       })
     .catch(err => console.log(err));
-
     userInfo.setUserInfo(dataUser)
     userInfo.setUserAvatar(dataUser);
   }).catch(err => console.log(err))
