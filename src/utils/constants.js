@@ -8,15 +8,9 @@ export const validationConfig = {
   typeError : 'popup__inputs_type_error',
 };
 
-
-const popupEditProfile = document.querySelector('#popup_edit-profile');
-// export const popupAddCard = document.querySelector('#popup_add-card');
-export const inputNamePopupEditProfile = popupEditProfile.querySelector('.popup__inputs_type_name');
-export const inputHobbyPopupEditProfile = popupEditProfile.querySelector('.popup__inputs_type_hobby');
 export const buttonEdit = document.querySelector('.profiles__buttons-edit');
 export const buttonAdd = document.querySelector('.profiles__buttons-add');
 export const buttonEditAvatar = document.querySelector('.profiles__buttons-avatar');
-// export const popupEditAvatarClear = document.querySelector('#popup_edit-avatar');
 export const configForApi = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-60',
   headers: {
