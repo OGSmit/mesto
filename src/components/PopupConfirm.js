@@ -1,18 +1,12 @@
 import { Popup } from "./Popup";
 export class PopupConfirm extends Popup {
-  constructor(popupSelectort) {
-    super(popupSelectort);
-    this._form = this._popupBySelector.querySelector('.popup__form');
-    this._inputList = this._popupBySelector.querySelectorAll('.popup__inputs');
+  constructor(popupSelector) {
+    super(popupSelector);
+    this._form = this._popup.querySelector('.popup__form');
+    this._inputList = this._popup.querySelectorAll('.popup__inputs');
+    this._buttonSave = this._form.querySelector('.popup__buttons-save');
   }
 
-  open() {
-    super.open();
-  }
-
-  close() {
-    super.close();
-  }
   handleFormSubmit(callback) {
     this._callBack = callback;
   }
@@ -25,11 +19,11 @@ export class PopupConfirm extends Popup {
     });
   }
 
-  loadingState() {
-    this._form.querySelector('.popup__buttons-save').textContent = 'Удаление...';
+  setLoadingState() {
+    this._buttonSave.textContent = 'Удаление...';
   }
 
-  normalState() {
-    this._form.querySelector('.popup__buttons-save').textContent = 'Да';
+  setNormalState() {
+    this._buttonSave.textContent = 'Да';
   }
 }

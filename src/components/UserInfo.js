@@ -11,7 +11,7 @@ export default class UserInfo {
       about: this._dataAbout.textContent
     };
   }
-
+  // решил разделить логику Профиля и Аватара
   setUserInfo(data) {
     this._data = data;
     this._dataName.textContent = this._data.name;

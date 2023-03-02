@@ -3,8 +3,9 @@ export class PopupWithForm extends Popup {
   constructor(popupSelectort, callBackSubmit) {
     super(popupSelectort);
     this._callBackSubmit = callBackSubmit;
-    this._form = this._popupBySelector.querySelector('.popup__form');
-    this._inputList = this._popupBySelector.querySelectorAll('.popup__inputs');
+    this._form = this._popup.querySelector('.popup__form');
+    this._inputList = this._popup.querySelectorAll('.popup__inputs');
+    this._submitBtn = this._form.querySelector('.popup__buttons-save');
   }
 
   getInputValues() {
@@ -24,20 +25,22 @@ export class PopupWithForm extends Popup {
     });
   }
 
-  loadingState() {
-    this._form.querySelector('.popup__buttons-save').textContent = 'Сохранение...';
+  setLoadingState() {
+    this._submitBtn.textContent = 'Сохранение...';
   }
 
-  normalState() {
-    this._form.querySelector('.popup__buttons-save').textContent = 'Сохранить';
-  }
-
-  open() {
-    super.open()
+  setNormalState() {
+    this._submitBtn.textContent = 'Сохранить';
   }
 
   close() {
     super.close();
     this._form.reset();
+  }
+
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      input.value = data[input.name];
+    });
   }
 }

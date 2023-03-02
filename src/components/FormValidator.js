@@ -56,7 +56,14 @@ _setEventListener() {
  }
 
  enableValidation() {
-  this._toggleButtonState(this._buttonElement);
+  this._toggleButtonState();
   this._setEventListener();
+ }
+
+ resetValidation() {
+  this._toggleButtonState();
+  this._inputList.forEach((inputElement) => {
+    this._hideInputError(inputElement);
+  });
  }
 }
