@@ -1,5 +1,5 @@
 <div id="header" align="center">
-  <img src="/images/Mylogo.png" width="100"/>
+  <img src="/src/images/Mylogo.png" width="100"/>
 </div>
 
 <div align="center">
@@ -8,7 +8,7 @@
 </div>
 
 <div id="header" align="center">
-  <img src="/src/images/preview.jpg" width="100"/>
+  <img src="/src/images/preview.jpg" width="1000"/>
 </div>
 
 ## Проект знакомил нас с такими понятиями как :
@@ -20,15 +20,15 @@
 - *Разметка и вёрстка форм*
 - *Валидация форм*
 <div id="header" align="center">
-  <img src="/src/images/profile.gif" width="100"/>
+  <img src="/src/images/profile.gif" width="1000"/>
 </div>
 - *Работа с сервером*
 <div id="header" align="center">
-  <img src="/src/images/addPlace.gif" width="100"/>
+  <img src="/src/images/addPlace.gif" width="1000"/>
 </div>
 - *Rest API*
 <div id="header" align="center">
-  <img src="/src/images/card.gif" width="100"/>
+  <img src="/src/images/card.gif" width="1000"/>
 </div>
 - *Продвинутое владение **Git Bash** и **Github***
 - *Дебаггинг **JavaScript***
