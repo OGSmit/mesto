@@ -22,14 +22,17 @@
 <div id="header" align="center">
   <img src="/src/images/profile.gif" width="1000"/>
 </div>
+
 - *Работа с сервером*
 <div id="header" align="center">
   <img src="/src/images/addPlace.gif" width="1000"/>
 </div>
+
 - *Rest API*
 <div id="header" align="center">
   <img src="/src/images/card.gif" width="1000"/>
 </div>
+
 - *Продвинутое владение **Git Bash** и **Github***
 - *Дебаггинг **JavaScript***
 ***
@@ -39,7 +42,7 @@
   <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
     <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40" height="40"/>&nbsp;
 <p>Посмотреть проект</p>
-<a target="_blank" href="https://ogsmit.github.io/mesto/"><img src="./images/checkIt.gif"></a></center>
+<a target="_blank" href="https://ogsmit.github.io/mesto/"><img src="/src/images/checkIt.gif"></a></center>
 </div>
 
 ***
