@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Проект №5</title>
 </head>
+
 <body class="page">
   <header class="header">
     <img alt="Логотип - Место" src="<%=require('./images/logo.svg')%>" class="header__logo">
@@ -13,17 +15,17 @@
   <main class="main">
     <section class="profiles">
       <div class="profiles__column">
-          <div class="profiles__container">
-            <img alt="Аватар профиля" src="<%=require('./images/profile__avatar.png')%>" class="profiles__avatar">
+        <div class="profiles__container">
+          <img alt="Аватар профиля" src="<%=require('./images/profile__avatar.png')%>" class="profiles__avatar">
 
-            <button class="profiles__buttons-avatar" type="button"></button>
-          </div>
-          <div class="profiles__row">
-            <h1 class="profiles__name"></h1>
-            <button class="profiles__buttons-edit" type="button"></button>
-          </div>
-          <p class="profiles__subtitle"></p>
-          <button class="profiles__buttons-add" type="button"></button>
+          <button class="profiles__buttons-avatar" type="button"></button>
+        </div>
+        <div class="profiles__row">
+          <h1 class="profiles__name"></h1>
+          <button class="profiles__buttons-edit" type="button"></button>
+        </div>
+        <p class="profiles__subtitle"></p>
+        <button class="profiles__buttons-add" type="button"></button>
       </div>
     </section>
     <section class="profile-content">
@@ -33,23 +35,11 @@
         <button class="popup__buttons-close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="profile-form" novalidate>
-          <input id="username"
-                 type="text"
-                 class="popup__inputs popup__inputs_type_name" 
-                 name="name"
-                 placeholder="Имя"
-                 minlength="2"
-                 maxlength="40"
-                 required>
+          <input id="username" type="text" class="popup__inputs popup__inputs_type_name" name="name" placeholder="Имя"
+            minlength="2" maxlength="40" required>
           <span class="username-error popup__input-error"></span>
-          <input id="hobby"
-                 type="text"
-                 class="popup__inputs popup__inputs_type_hobby"
-                 name="about"
-                 placeholder="Вид деятельности"
-                 minlength="2"
-                 maxlength="200"
-                 required>
+          <input id="hobby" type="text" class="popup__inputs popup__inputs_type_hobby" name="about"
+            placeholder="Вид деятельности" minlength="2" maxlength="200" required>
           <span class="hobby-error popup__input-error"></span>
           <button class="popup__buttons-save" type="submit">Сохранить</button>
         </form>
@@ -60,25 +50,15 @@
         <button class="popup__buttons-close" type="button"></button>
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="addcard-form" novalidate>
-          <input type="text"
-                 id="place"
-                 class="popup__inputs popup__inputs_type_name"
-                 placeholder="Название"
-                 name="name"
-                 minlength="2"
-                 maxlength="40"
-                 required>
+          <input type="text" id="place" class="popup__inputs popup__inputs_type_name" placeholder="Название" name="name"
+            minlength="2" maxlength="40" required>
           <span class="place-error popup__input-error"></span>
-          <input type="url"
-                 id="place-link"
-                 class="popup__inputs popup__inputs_type_hobby" 
-                 placeholder="Ссылка на картинку" 
-                 name="link"
-                 required>
+          <input type="url" id="place-link" class="popup__inputs popup__inputs_type_hobby"
+            placeholder="Ссылка на картинку" name="link" required>
           <span class="place-link-error popup__input-error"></span>
           <button class="popup__buttons-save " type="submit">Создать</button>
         </form>
-      </div> 
+      </div>
     </div>
     <div class="popup popup_dark" id="popup_image">
       <div class="popup__container popup__container_target">
@@ -101,20 +81,17 @@
         <button class="popup__buttons-close" type="button"></button>
         <h3 class="popup__title" style="margin-bottom: 45px;">Обновить аватар</h3>
         <form class="popup__form" name="avatar-form" novalidate>
-          <input type="url"
-                 id="link"
-                 class="popup__inputs popup__inputs_type_hobby" 
-                 placeholder="Ссылка на картинку" 
-                 name="avatar"
-                 required>
+          <input type="url" id="link" class="popup__inputs popup__inputs_type_hobby" placeholder="Ссылка на картинку"
+            name="avatar" required>
           <span class="link-error popup__input-error"></span>
           <button class="popup__buttons-save" style="margin-top: 16px;" type="submit">Сохранить</button>
         </form>
-      </div> 
+      </div>
     </div>
     <template id="template">
       <div class="place-card">
-        <img src="<%=require('./images/karachaevsk.png')%>" alt="фотография города Карачаевск" class="place-card__image">
+        <img src="<%=require('./images/karachaevsk.png')%>" alt="фотография города Карачаевск"
+          class="place-card__image">
         <button class="place-card__buttons-delete" type="button"></button>
         <div class="place-card__container">
           <h2 class="place-card__subtitle">Карачаевск</h2>
@@ -130,4 +107,5 @@
     <p class="footer__subtitle">© 2022 Mesto Russia</p>
   </footer>
 </body>
+
 </html>

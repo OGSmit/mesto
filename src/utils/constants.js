@@ -18,5 +18,3 @@ export const configForApi = {
     'Content-Type': 'application/json'
   }
 }
-
-
