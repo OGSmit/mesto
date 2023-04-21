@@ -7,7 +7,9 @@
   <p>в рамках обучения на Яндекс Практикум</p>
 </div>
 
-![Screenshot of a page](/images/preview.jpg)
+<div id="header" align="center">
+  <img src="/src/images/preview.jpg" width="100"/>
+</div>
 
 ## Проект знакомил нас с такими понятиями как :
 
@@ -17,11 +19,17 @@
 - *Структура файлов **БЭМ***
 - *Разметка и вёрстка форм*
 - *Валидация форм*
-![Screenshot of a page](/images/profile.gif)
+<div id="header" align="center">
+  <img src="/src/images/profile.gif" width="100"/>
+</div>
 - *Работа с сервером*
-![Screenshot of a page](/images/addPlace.gif)
+<div id="header" align="center">
+  <img src="/src/images/addPlace.gif" width="100"/>
+</div>
 - *Rest API*
-![Screenshot of a page](/images/card.gif)
+<div id="header" align="center">
+  <img src="/src/images/card.gif" width="100"/>
+</div>
 - *Продвинутое владение **Git Bash** и **Github***
 - *Дебаггинг **JavaScript***
 ***
